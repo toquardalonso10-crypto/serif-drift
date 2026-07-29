@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
 import {
   Cloud,
   CloudDrizzle,
@@ -10,6 +9,8 @@ import {
   Wind,
   Zap,
 } from "lucide-react";
+import { Marquee } from "./Marquee";
+
 
 const VILLES = [
   { nom: "La Rochelle", lat: 46.16, lon: -1.15 },
@@ -94,55 +95,59 @@ export function Meteo() {
           </p>
         )}
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {(isLoading || !data) && !isError
-            ? VILLES.map((v) => (
+        <div className="mt-10">
+          {(isLoading || !data) && !isError ? (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {VILLES.map((v) => (
                 <div
                   key={v.nom}
                   className="h-[132px] animate-pulse rounded-xl bg-cream/10"
                 />
-              ))
-            : data?.map((v, i) => {
-                const Icon = icone(v.current.weather_code);
-                const vent = Math.round(v.current.wind_speed_10m);
-                const ventFort = vent >= 40;
-                return (
-                  <motion.article
-                    key={v.nom}
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-60px" }}
-                    transition={{ duration: 0.5, delay: i * 0.06 }}
-                    className="rounded-xl border border-cream/10 bg-cream/[0.06] p-5 backdrop-blur transition-colors hover:bg-cream/10"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <h3 className="text-lg font-semibold">{v.nom}</h3>
-                        <p className="text-xs text-cream/55">
-                          {libelle(v.current.weather_code)}
-                        </p>
+              ))}
+            </div>
+          ) : (
+            data && (
+              <Marquee
+                items={data}
+                itemKey={(v) => v.nom}
+                render={(v) => {
+                  const Icon = icone(v.current.weather_code);
+                  const vent = Math.round(v.current.wind_speed_10m);
+                  const ventFort = vent >= 40;
+                  return (
+                    <article className="rounded-xl border border-cream/10 bg-cream/[0.06] p-5 backdrop-blur transition-colors hover:bg-cream/10">
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <h3 className="text-lg font-semibold">{v.nom}</h3>
+                          <p className="text-xs text-cream/55">
+                            {libelle(v.current.weather_code)}
+                          </p>
+                        </div>
+                        <Icon className="h-8 w-8 text-ochre" />
                       </div>
-                      <Icon className="h-8 w-8 text-ochre" />
-                    </div>
-                    <div className="mt-4 flex items-end justify-between">
-                      <span className="text-4xl font-extrabold text-moss">
-                        {Math.round(v.current.temperature_2m)}°
-                      </span>
-                      <span
-                        className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs ${
-                          ventFort
-                            ? "bg-terracotta/25 text-ochre"
-                            : "bg-cream/10 text-cream/70"
-                        }`}
-                      >
-                        <Wind className="h-3.5 w-3.5" />
-                        {vent} km/h {ventFort ? "· nacelle only" : ""}
-                      </span>
-                    </div>
-                  </motion.article>
-                );
-              })}
+                      <div className="mt-4 flex items-end justify-between">
+                        <span className="text-4xl font-extrabold text-moss">
+                          {Math.round(v.current.temperature_2m)}°
+                        </span>
+                        <span
+                          className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs ${
+                            ventFort
+                              ? "bg-terracotta/25 text-ochre"
+                              : "bg-cream/10 text-cream/70"
+                          }`}
+                        >
+                          <Wind className="h-3.5 w-3.5" />
+                          {vent} km/h {ventFort ? "· nacelle only" : ""}
+                        </span>
+                      </div>
+                    </article>
+                  );
+                }}
+              />
+            )
+          )}
         </div>
+
       </div>
     </section>
   );
