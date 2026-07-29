@@ -74,20 +74,15 @@ export function AvantApres() {
             height={912}
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div
-            className="absolute inset-0 overflow-hidden"
-            style={{ width: `${pos}%` }}
-          >
-            <img
-              src={avant}
-              alt="Le platane avant l'intervention : branches enchevêtrées et bois mort"
-              loading="lazy"
-              width={1408}
-              height={912}
-              className="absolute inset-0 h-full w-full object-cover"
-              style={{ width: ref.current?.offsetWidth ?? "100%", maxWidth: "none" }}
-            />
-          </div>
+          <img
+            src={avant}
+            alt="Le platane avant l'intervention : branches enchevêtrées et bois mort"
+            loading="lazy"
+            width={1408}
+            height={912}
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+          />
 
           <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-bark/80 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-cream">
             Avant
