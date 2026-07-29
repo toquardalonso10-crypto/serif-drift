@@ -37,10 +37,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main id="top">
-      <h1 className="sr-only">
-        Ets Toquard &amp; Fils, élagage et abattage d'arbres en
-        Charente-Maritime
-      </h1>
       <Hero />
       <Meteo />
       <Services />
