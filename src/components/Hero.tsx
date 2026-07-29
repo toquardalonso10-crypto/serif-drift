@@ -109,8 +109,10 @@ export function Hero() {
             className="mt-6 max-w-md text-[15px] leading-relaxed text-ink"
           >
             Élagage, abattage délicat, taille douce et démontage par cordes. De
-            La Rochelle à Jonzac, on grimpe dans vos arbres depuis trois
-            générations — assurés, équipés, et on ramasse tout avant de partir.
+            La Rochelle à Jonzac, on grimpe dans vos arbres depuis 16 ans —
+            assurés, équipés, et on ramasse tout avant de partir. Paiement en 3,
+            5 ou 10 fois sans frais.
+
           </motion.p>
 
           <motion.div
