@@ -13,8 +13,10 @@ export function Footer() {
           </div>
           <p className="mt-3 max-w-xs text-sm opacity-80">
             Élagage, abattage et entretien d'arbres en Charente-Maritime depuis
-            1978. Trois générations de grimpeurs.
+            16 ans. Plus de 350 arbres taillés. Paiement en 3, 5 ou 10 fois sans
+            frais.
           </p>
+
         </div>
         <ul className="space-y-2 text-sm opacity-90">
           <li className="flex gap-2">
