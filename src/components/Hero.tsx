@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Phone, Leaf, Star } from "lucide-react";
 import { SerifGlow } from "./SerifGlow";
 import { BandeauPaiement } from "./BandeauPaiement";
-import heroImg from "@/assets/hero-elagueur.jpg";
+import { JardinIA } from "./JardinIA";
 
 export function Hero() {
   return (
@@ -163,19 +163,8 @@ export function Hero() {
           transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative"
         >
-          <div className="relative rotate-[1.5deg] rounded-sm border-8 border-card bg-card p-0 shadow-lift">
-            <img
-              src={heroImg}
-              alt="Élagueur de l'entreprise Toquard & Fils en train de tailler un chêne au-dessus d'un domaine charentais"
-              width={1408}
-              height={1200}
-              className="h-[52vh] w-full object-cover md:h-[62vh]"
-            />
-            <div className="flex items-center justify-between px-3 py-2 text-[11px] uppercase tracking-[0.2em] text-ink/70">
-              <span>Chantier — Saint-Georges-des-Coteaux</span>
-              <span className="font-serif text-base">(01)</span>
-            </div>
-          </div>
+          <JardinIA />
+
 
           <motion.div
             initial={{ opacity: 0, scale: 0.5, rotate: -18 }}
