@@ -65,7 +65,38 @@ const AVIS = [
       "Troisième chantier avec eux. Chêne vert de 18 mètres démonté par cordes entre deux maisons, pas une tuile cassée. Du vrai travail d'artisan.",
     couleur: "bg-bark",
   },
+  {
+    nom: "Christelle Mahé",
+    ville: "Saint-Jean-d'Angély",
+    initiales: "CM",
+    note: 5,
+    date: "il y a 5 mois",
+    texte:
+      "Abonnement mensuel depuis l'hiver : le jardin est toujours nickel et je ne m'occupe plus de rien. Le rappel SMS la veille, c'est un vrai plus.",
+    couleur: "bg-forest",
+  },
+  {
+    nom: "Yannick Delaunay",
+    ville: "Oléron",
+    initiales: "YD",
+    note: 5,
+    date: "il y a 6 mois",
+    texte:
+      "Deux pins maritimes en bord de dune, travail propre et sécurisé malgré le vent. Paiement en 5 fois sans frais, très appréciable.",
+    couleur: "bg-sky",
+  },
+  {
+    nom: "Élodie Vergnaud",
+    ville: "Surgères",
+    initiales: "EV",
+    note: 4,
+    date: "il y a 7 mois",
+    texte:
+      "Bon rapport qualité-prix sur la taille des lauriers. Équipe polie, matériel impeccable, un peu de bruit le matin mais c'est le métier.",
+    couleur: "bg-terracotta",
+  },
 ];
+
 
 function Etoiles({ note }: { note: number }) {
   return (
@@ -109,37 +140,40 @@ export function Avis() {
           </div>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {AVIS.map((a, i) => (
-            <motion.article
-              key={a.nom}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
-              whileHover={{ rotate: i % 2 ? 0.7 : -0.7, y: -4 }}
-              className="rounded-xl border border-bark/10 bg-card p-6 shadow-rustic"
-            >
-              <div className="flex items-center gap-3">
-                <span
-                  className={`grid h-11 w-11 place-items-center rounded-full text-sm font-bold text-cream ${a.couleur}`}
-                >
-                  {a.initiales}
-                </span>
-                <div>
-                  <p className="font-semibold text-bark">{a.nom}</p>
-                  <p className="text-[11px] uppercase tracking-wider text-ink/60">
-                    {a.ville} · {a.date}
+        <div className="space-y-5">
+          {[false, true].map((reverse, ligne) => (
+            <Marquee
+              key={ligne}
+              items={AVIS}
+              reverse={reverse}
+              itemKey={(a) => a.nom}
+              render={(a) => (
+                <article className="h-full rounded-xl border border-bark/10 bg-card p-6 shadow-rustic transition-transform duration-300 hover:-translate-y-1">
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`grid h-11 w-11 place-items-center rounded-full text-sm font-bold text-cream ${a.couleur}`}
+                    >
+                      {a.initiales}
+                    </span>
+                    <div>
+                      <p className="font-semibold text-bark">{a.nom}</p>
+                      <p className="text-[11px] uppercase tracking-wider text-ink/60">
+                        {a.ville} · {a.date}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-4">
+                    <Etoiles note={a.note} />
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-ink">
+                    {a.texte}
                   </p>
-                </div>
-              </div>
-              <div className="mt-4">
-                <Etoiles note={a.note} />
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-ink">{a.texte}</p>
-            </motion.article>
+                </article>
+              )}
+            />
           ))}
         </div>
+
       </div>
     </section>
   );
