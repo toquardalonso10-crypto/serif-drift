@@ -129,9 +129,10 @@ export function Hero() {
             className="mt-10 grid max-w-lg grid-cols-3 gap-4 border-t border-bark/15 pt-6"
           >
             {[
-              ["46 ans", "de métier"],
-              ["2 400+", "arbres taillés"],
+              ["16 ans", "de métier"],
+              ["350+", "arbres taillés"],
               ["4,9/5", "sur Google"],
+
             ].map(([k, v]) => (
               <div key={k}>
                 <dt className="text-2xl font-extrabold text-forest">{k}</dt>
