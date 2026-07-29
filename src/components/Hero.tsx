@@ -39,12 +39,6 @@ export function Hero() {
               Devis
             </a>
           </div>
-          <a
-            href="#devis"
-            className="rounded-full border-gold-hairline bg-forest px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-primary-foreground shadow-luxe transition-transform hover:-translate-y-0.5"
-          >
-            Devis gratuit
-          </a>
         </nav>
       </div>
 
