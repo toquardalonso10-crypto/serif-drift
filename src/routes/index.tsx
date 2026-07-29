@@ -44,7 +44,9 @@ function Index() {
       <Meteo />
       <Services />
       <AvantApres />
+      <Abonnements />
       <Avis />
+
       <Devis />
       <Footer />
       <BulleDevis />
