@@ -9,6 +9,8 @@ import { Avis } from "@/components/Avis";
 import { Devis } from "@/components/Devis";
 import { Footer } from "@/components/Footer";
 import { BulleDevis } from "@/components/BulleDevis";
+import { ChatArbre } from "@/components/ChatArbre";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -50,6 +52,8 @@ function Index() {
       <Devis />
       <Footer />
       <BulleDevis />
+      <ChatArbre />
+
     </main>
   );
 }

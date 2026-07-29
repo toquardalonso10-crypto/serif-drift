@@ -97,16 +97,17 @@ export function Abonnements() {
               >
                 {f.resume}
               </p>
-              <p className="mt-6 flex items-baseline gap-2">
-                <span className="text-5xl font-extrabold tracking-tight">
-                  {f.prix}€
-                </span>
-                <span
-                  className={`text-xs uppercase tracking-widest ${f.accent ? "text-cream/60" : "text-ink/60"}`}
-                >
-                  {f.rythme}
-                </span>
+              <p
+                className={`mt-6 rounded-xl px-4 py-3 text-sm leading-relaxed ${
+                  f.accent
+                    ? "border-gold-hairline bg-cream/10 text-cream/85"
+                    : "border border-bark/12 bg-cream/70 text-ink"
+                }`}
+              >
+                Tarif défini ensemble, sur place, après une visite gratuite de
+                votre jardin.
               </p>
+
               <ul className="mt-6 space-y-2.5 text-sm">
                 {f.inclus.map((item) => (
                   <li key={item} className="flex gap-2.5">
