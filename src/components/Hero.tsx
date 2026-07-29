@@ -32,7 +32,7 @@ export function Hero() {
         </div>
         <a
           href="#devis"
-          className="rounded-full bg-forest px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground shadow-rustic transition-transform hover:-translate-y-0.5"
+          className="rounded-full border-gold-hairline bg-forest px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-primary-foreground shadow-luxe transition-transform hover:-translate-y-0.5"
         >
           Devis gratuit
         </a>
@@ -44,7 +44,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-bark/15 bg-ochre/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-bark"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border-gold-hairline bg-ochre/30 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-bark backdrop-blur"
           >
             <Star className="h-3.5 w-3.5 fill-terracotta text-terracotta" />
             Artisans élagueurs depuis 1978 — Charente-Maritime
