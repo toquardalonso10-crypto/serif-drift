@@ -1,44 +1,54 @@
 import { motion } from "framer-motion";
 import { Phone, Leaf, Star } from "lucide-react";
 import { SerifGlow } from "./SerifGlow";
+import { BandeauPaiement } from "./BandeauPaiement";
 import heroImg from "@/assets/hero-elagueur.jpg";
 
 export function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-cream paper-grain">
       {/* Bandeau haut */}
-      <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-6 bg-cream/85 px-5 py-3 backdrop-blur md:px-8">
-        <a href="#top" className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-canopy text-primary-foreground">
-            <Leaf className="h-5 w-5" />
-          </span>
-          <span className="text-sm font-extrabold uppercase tracking-[0.18em] text-bark">
-            Ets Toquard <span className="text-terracotta">&amp;</span> Fils
-          </span>
-        </a>
-        <div className="hidden items-center gap-7 text-sm text-ink md:flex">
-          <a className="transition-opacity hover:opacity-60" href="#meteo">
-            Météo
+      <div className="fixed inset-x-0 top-0 z-50">
+        <BandeauPaiement />
+        <nav className="flex items-center justify-between gap-6 bg-cream/85 px-5 py-3 backdrop-blur md:px-8">
+          <a href="#top" className="flex items-center gap-2">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-canopy text-primary-foreground">
+              <Leaf className="h-5 w-5" />
+            </span>
+            <span className="text-sm font-extrabold uppercase tracking-[0.18em] text-bark">
+              Ets Toquard <span className="text-terracotta">&amp;</span> Fils
+            </span>
           </a>
-          <a className="transition-opacity hover:opacity-60" href="#chantiers">
-            Avant / Après
+          <div className="hidden items-center gap-7 text-sm text-ink md:flex">
+            <a className="transition-opacity hover:opacity-60" href="#meteo">
+              Météo
+            </a>
+            <a className="transition-opacity hover:opacity-60" href="#chantiers">
+              Avant / Après
+            </a>
+            <a
+              className="transition-opacity hover:opacity-60"
+              href="#abonnements"
+            >
+              Abonnements
+            </a>
+            <a className="transition-opacity hover:opacity-60" href="#avis">
+              Avis
+            </a>
+            <a className="transition-opacity hover:opacity-60" href="#devis">
+              Devis
+            </a>
+          </div>
+          <a
+            href="#devis"
+            className="rounded-full border-gold-hairline bg-forest px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-primary-foreground shadow-luxe transition-transform hover:-translate-y-0.5"
+          >
+            Devis gratuit
           </a>
-          <a className="transition-opacity hover:opacity-60" href="#avis">
-            Avis
-          </a>
-          <a className="transition-opacity hover:opacity-60" href="#devis">
-            Devis
-          </a>
-        </div>
-        <a
-          href="#devis"
-          className="rounded-full border-gold-hairline bg-forest px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-primary-foreground shadow-luxe transition-transform hover:-translate-y-0.5"
-        >
-          Devis gratuit
-        </a>
-      </nav>
+        </nav>
+      </div>
 
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 pt-28 pb-16 md:px-8 lg:grid-cols-[1.05fr_1fr] lg:pt-32">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 pt-32 pb-16 md:px-8 lg:grid-cols-[1.05fr_1fr] lg:pt-40">
         <div className="relative z-10">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -47,8 +57,9 @@ export function Hero() {
             className="mb-5 inline-flex items-center gap-2 rounded-full border-gold-hairline bg-ochre/30 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-bark backdrop-blur"
           >
             <Star className="h-3.5 w-3.5 fill-terracotta text-terracotta" />
-            Artisans élagueurs depuis 1978 — Charente-Maritime
+            Artisans élagueurs — Charente-Maritime
           </motion.p>
+
 
           <motion.h1
             className="text-bark"
@@ -98,8 +109,10 @@ export function Hero() {
             className="mt-6 max-w-md text-[15px] leading-relaxed text-ink"
           >
             Élagage, abattage délicat, taille douce et démontage par cordes. De
-            La Rochelle à Jonzac, on grimpe dans vos arbres depuis trois
-            générations — assurés, équipés, et on ramasse tout avant de partir.
+            La Rochelle à Jonzac, on grimpe dans vos arbres depuis 16 ans —
+            assurés, équipés, et on ramasse tout avant de partir. Paiement en 3,
+            5 ou 10 fois sans frais.
+
           </motion.p>
 
           <motion.div
@@ -129,9 +142,10 @@ export function Hero() {
             className="mt-10 grid max-w-lg grid-cols-3 gap-4 border-t border-bark/15 pt-6"
           >
             {[
-              ["46 ans", "de métier"],
-              ["2 400+", "arbres taillés"],
+              ["16 ans", "de métier"],
+              ["350+", "arbres taillés"],
               ["4,9/5", "sur Google"],
+
             ].map(([k, v]) => (
               <div key={k}>
                 <dt className="text-2xl font-extrabold text-forest">{k}</dt>

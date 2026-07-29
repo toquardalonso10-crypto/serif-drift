@@ -3,7 +3,9 @@ import { Hero } from "@/components/Hero";
 import { Meteo } from "@/components/Meteo";
 import { Services } from "@/components/Services";
 import { AvantApres } from "@/components/AvantApres";
+import { Abonnements } from "@/components/Abonnements";
 import { Avis } from "@/components/Avis";
+
 import { Devis } from "@/components/Devis";
 import { Footer } from "@/components/Footer";
 import { BulleDevis } from "@/components/BulleDevis";
@@ -42,7 +44,9 @@ function Index() {
       <Meteo />
       <Services />
       <AvantApres />
+      <Abonnements />
       <Avis />
+
       <Devis />
       <Footer />
       <BulleDevis />
