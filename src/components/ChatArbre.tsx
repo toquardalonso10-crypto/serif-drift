@@ -7,7 +7,7 @@ type Message = { role: "user" | "assistant"; content: string };
 const ACCUEIL: Message = {
   role: "assistant",
   content:
-    "Bonjour ! Je suis Petit Chêne, la mascotte des Ets Toquard & Fils. Posez-moi vos questions sur nos interventions, nos abonnements ou nos secteurs 🌳",
+    "Bonjour ! Je suis Petit Chêne, la mascotte des Ets Toquard & Fils. Posez-moi vos questions sur nos interventions, nos abonnements ou nos secteurs.",
 };
 
 function Arbre({ parle }: { parle: boolean }) {
