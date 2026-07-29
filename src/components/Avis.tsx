@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { SerifGlow } from "./SerifGlow";
+import { Marquee } from "./Marquee";
+
+
 
 const AVIS = [
   {
