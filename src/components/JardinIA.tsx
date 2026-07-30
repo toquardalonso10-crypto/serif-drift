@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Sparkles, X, Wand2, Loader2, TreePalm } from "lucide-react";
+import { Sparkles, X, Wand2, Loader2, TreePalm, ImagePlus, Trash2 } from "lucide-react";
 
 const IDEES = [
   "Un jardin méditerranéen avec oliviers et gravier clair",
@@ -9,15 +9,37 @@ const IDEES = [
   "Un jardin d'ombre sous grands chênes, fougères et hortensias",
 ];
 
+const TAILLE_MAX = 8 * 1024 * 1024;
+
 export function JardinIA() {
   const [ouvert, setOuvert] = useState(false);
   const [envie, setEnvie] = useState("");
+  const [photo, setPhoto] = useState<string | null>(null);
   const [image, setImage] = useState<string | null>(null);
   const [chargement, setChargement] = useState(false);
   const [erreur, setErreur] = useState<string | null>(null);
+  const inputFichier = useRef<HTMLInputElement>(null);
+
+  const choisirPhoto = (fichier?: File | null) => {
+    if (!fichier) return;
+    if (!fichier.type.startsWith("image/")) {
+      setErreur("Choisissez une photo (JPG ou PNG).");
+      return;
+    }
+    if (fichier.size > TAILLE_MAX) {
+      setErreur("Photo trop lourde (8 Mo maximum).");
+      return;
+    }
+    const lecteur = new FileReader();
+    lecteur.onload = () => {
+      setErreur(null);
+      setPhoto(typeof lecteur.result === "string" ? lecteur.result : null);
+    };
+    lecteur.readAsDataURL(fichier);
+  };
 
   const generer = async () => {
-    if (envie.trim().length < 3) return;
+    if (!photo && envie.trim().length < 3) return;
     setChargement(true);
     setErreur(null);
     setImage(null);
@@ -25,7 +47,7 @@ export function JardinIA() {
       const res = await fetch("/api/jardin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: envie }),
+        body: JSON.stringify({ prompt: envie, photo }),
       });
       const data = (await res.json()) as { image?: string; error?: string };
       if (!res.ok || !data.image) {
@@ -39,6 +61,7 @@ export function JardinIA() {
       setChargement(false);
     }
   };
+
 
   return (
     <>
@@ -135,6 +158,53 @@ export function JardinIA() {
                 ))}
               </div>
 
+
+              <div className="mt-5 rounded-xl border border-dashed border-bark/25 bg-card/60 p-4">
+                <p className="text-luxe-eyebrow text-terracotta">
+                  Votre jardin en photo
+                </p>
+                <p className="mt-2 text-sm text-ink/70">
+                  Ajoutez une photo de votre jardin : l'assistant garde votre
+                  décor et vous montre le résultat après notre passage.
+                </p>
+                <input
+                  ref={inputFichier}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(e) => choisirPhoto(e.target.files?.[0])}
+                />
+                <div className="mt-3 flex flex-wrap items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => inputFichier.current?.click()}
+                    className="inline-flex items-center gap-2 rounded-full border border-bark/20 bg-card px-4 py-2.5 text-sm font-semibold text-bark transition-colors hover:bg-ochre/30"
+                  >
+                    <ImagePlus className="h-4 w-4" />
+                    {photo ? "Changer la photo" : "Ajouter une photo de mon jardin"}
+                  </button>
+                  {photo && (
+                    <>
+                      <img
+                        src={photo}
+                        alt="Photo du jardin envoyée par le client"
+                        className="h-14 w-20 rounded-md border border-bark/15 object-cover"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPhoto(null);
+                          if (inputFichier.current) inputFichier.current.value = "";
+                        }}
+                        className="inline-flex items-center gap-1.5 text-xs text-terracotta"
+                      >
+                        <Trash2 className="h-3.5 w-3.5" /> Retirer
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+
               <button
                 type="button"
                 onClick={generer}
@@ -146,8 +216,13 @@ export function JardinIA() {
                 ) : (
                   <Wand2 className="h-4 w-4" />
                 )}
-                {chargement ? "Création en cours…" : "Créer mon aperçu"}
+                {chargement
+                  ? "Création en cours…"
+                  : photo
+                    ? "Transformer ma photo"
+                    : "Créer mon aperçu"}
               </button>
+
 
               {erreur && (
                 <p className="mt-4 text-sm text-terracotta">{erreur}</p>
