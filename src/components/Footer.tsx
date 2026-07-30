@@ -20,8 +20,8 @@ export function Footer() {
         </div>
         <ul className="space-y-2 text-sm opacity-90">
           <li className="flex gap-2">
-            <MapPin className="h-4 w-4 shrink-0" /> 12 route des Charmes, 17100
-            Saintes
+            <MapPin className="h-4 w-4 shrink-0" /> 107 avenue de Saintonge,
+            17430 Tonnay-Charente
           </li>
           <li className="flex gap-2">
             <Phone className="h-4 w-4 shrink-0" /> 07 78 26 00 88
