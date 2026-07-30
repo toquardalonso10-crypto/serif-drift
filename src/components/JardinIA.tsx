@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Sparkles, X, Wand2, Loader2, TreePalm } from "lucide-react";
+import { Sparkles, X, Wand2, Loader2, TreePalm, ImagePlus, Trash2 } from "lucide-react";
 
 const IDEES = [
   "Un jardin méditerranéen avec oliviers et gravier clair",
@@ -9,15 +9,37 @@ const IDEES = [
   "Un jardin d'ombre sous grands chênes, fougères et hortensias",
 ];
 
+const TAILLE_MAX = 8 * 1024 * 1024;
+
 export function JardinIA() {
   const [ouvert, setOuvert] = useState(false);
   const [envie, setEnvie] = useState("");
+  const [photo, setPhoto] = useState<string | null>(null);
   const [image, setImage] = useState<string | null>(null);
   const [chargement, setChargement] = useState(false);
   const [erreur, setErreur] = useState<string | null>(null);
+  const inputFichier = useRef<HTMLInputElement>(null);
+
+  const choisirPhoto = (fichier?: File | null) => {
+    if (!fichier) return;
+    if (!fichier.type.startsWith("image/")) {
+      setErreur("Choisissez une photo (JPG ou PNG).");
+      return;
+    }
+    if (fichier.size > TAILLE_MAX) {
+      setErreur("Photo trop lourde (8 Mo maximum).");
+      return;
+    }
+    const lecteur = new FileReader();
+    lecteur.onload = () => {
+      setErreur(null);
+      setPhoto(typeof lecteur.result === "string" ? lecteur.result : null);
+    };
+    lecteur.readAsDataURL(fichier);
+  };
 
   const generer = async () => {
-    if (envie.trim().length < 3) return;
+    if (!photo && envie.trim().length < 3) return;
     setChargement(true);
     setErreur(null);
     setImage(null);
@@ -25,7 +47,7 @@ export function JardinIA() {
       const res = await fetch("/api/jardin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: envie }),
+        body: JSON.stringify({ prompt: envie, photo }),
       });
       const data = (await res.json()) as { image?: string; error?: string };
       if (!res.ok || !data.image) {
@@ -39,6 +61,7 @@ export function JardinIA() {
       setChargement(false);
     }
   };
+
 
   return (
     <>
