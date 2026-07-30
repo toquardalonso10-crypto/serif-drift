@@ -24,7 +24,7 @@ export function Footer() {
             Saintes
           </li>
           <li className="flex gap-2">
-            <Phone className="h-4 w-4 shrink-0" /> 05 46 00 00 00
+            <Phone className="h-4 w-4 shrink-0" /> 07 78 26 00 88
           </li>
           <li className="flex gap-2">
             <Mail className="h-4 w-4 shrink-0" /> contact@toquard-et-fils.fr
