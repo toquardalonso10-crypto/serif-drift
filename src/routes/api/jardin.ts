@@ -27,12 +27,27 @@ export const Route = createFileRoute("/api/jardin")({
         if (!key) return new Response("Missing LOVABLE_API_KEY", { status: 500 });
 
         const consigne = aPhoto
-          ? `Transforme cette photo du jardin du client en une version réaliste après intervention
-d'un paysagiste professionnel : conserve exactement le même cadrage, la même maison, les mêmes
-arbres existants et le même point de vue. Taille les haies, nettoie les massifs, soigne la pelouse
-et aménage selon le souhait du client. Rendu photographique, lumière naturelle de fin d'après-midi
-en Charente-Maritime.
-Souhait du client : ${prompt?.trim() || "un jardin net, entretenu et harmonieux"}`
+          ? `RETOUCHE PHOTO MINIMALE. Tu dois renvoyer EXACTEMENT la même photographie que celle
+fournie, avec seulement 2 ou 3 petits ajustements d'entretien. Ce n'est pas une nouvelle image :
+c'est la même photo, légèrement retouchée.
+
+À conserver à l'identique, sans aucune modification : le cadrage, l'objectif et la perspective,
+la maison et ses matériaux, les murs, clôtures, portails, allées, mobilier, véhicules, le ciel,
+la météo, l'heure, la lumière et les ombres, la position et la taille de chaque arbre, haie,
+massif et arbuste existants, ainsi que la qualité et le grain photographique d'origine.
+
+Interdit : ajouter ou supprimer des plantes, arbres, arbustes, massifs, terrasses, piscines,
+mobilier ou décors ; élargir ou recadrer la scène ; changer le style, la saison ou les couleurs ;
+rendre l'image plus « belle », plus lumineuse ou plus spectaculaire ; produire un rendu 3D,
+illustration ou photo de catalogue.
+
+Autorisé uniquement : tailler proprement les haies et arbustes déjà présents, éclaircir légèrement
+les branches des arbres déjà présents, tondre la pelouse existante, désherber et nettoyer les
+massifs et allées, retirer les branches et déchets verts au sol.
+
+Résultat attendu : on doit reconnaître immédiatement le même jardin, simplement fraîchement
+entretenu. Photographie réaliste, identique à l'originale.
+Demande du client (à appliquer avec la plus grande sobriété) : ${prompt?.trim() || "un entretien simple : haies taillées, pelouse tondue, massifs nettoyés"}`
           : `Photographie réaliste, lumière naturelle de fin d'après-midi en Charente-Maritime,
 grand angle, rendu paysagiste professionnel d'un jardin fraîchement aménagé et entretenu.
 Souhait du client : ${prompt!.trim()}`;

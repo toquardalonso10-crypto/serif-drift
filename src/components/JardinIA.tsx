@@ -165,7 +165,8 @@ export function JardinIA() {
                 </p>
                 <p className="mt-2 text-sm text-ink/70">
                   Ajoutez une photo de votre jardin : l'assistant garde votre
-                  décor et vous montre le résultat après notre passage.
+                  décor à l'identique et applique seulement l'entretien (haies
+                  taillées, pelouse tondue, massifs nettoyés).
                 </p>
                 <input
                   ref={inputFichier}
