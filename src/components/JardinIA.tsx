@@ -158,6 +158,53 @@ export function JardinIA() {
                 ))}
               </div>
 
+
+              <div className="mt-5 rounded-xl border border-dashed border-bark/25 bg-card/60 p-4">
+                <p className="text-luxe-eyebrow text-terracotta">
+                  Votre jardin en photo
+                </p>
+                <p className="mt-2 text-sm text-ink/70">
+                  Ajoutez une photo de votre jardin : l'assistant garde votre
+                  décor et vous montre le résultat après notre passage.
+                </p>
+                <input
+                  ref={inputFichier}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(e) => choisirPhoto(e.target.files?.[0])}
+                />
+                <div className="mt-3 flex flex-wrap items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => inputFichier.current?.click()}
+                    className="inline-flex items-center gap-2 rounded-full border border-bark/20 bg-card px-4 py-2.5 text-sm font-semibold text-bark transition-colors hover:bg-ochre/30"
+                  >
+                    <ImagePlus className="h-4 w-4" />
+                    {photo ? "Changer la photo" : "Ajouter une photo de mon jardin"}
+                  </button>
+                  {photo && (
+                    <>
+                      <img
+                        src={photo}
+                        alt="Photo du jardin envoyée par le client"
+                        className="h-14 w-20 rounded-md border border-bark/15 object-cover"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPhoto(null);
+                          if (inputFichier.current) inputFichier.current.value = "";
+                        }}
+                        className="inline-flex items-center gap-1.5 text-xs text-terracotta"
+                      >
+                        <Trash2 className="h-3.5 w-3.5" /> Retirer
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+
               <button
                 type="button"
                 onClick={generer}
@@ -169,8 +216,13 @@ export function JardinIA() {
                 ) : (
                   <Wand2 className="h-4 w-4" />
                 )}
-                {chargement ? "Création en cours…" : "Créer mon aperçu"}
+                {chargement
+                  ? "Création en cours…"
+                  : photo
+                    ? "Transformer ma photo"
+                    : "Créer mon aperçu"}
               </button>
+
 
               {erreur && (
                 <p className="mt-4 text-sm text-terracotta">{erreur}</p>
