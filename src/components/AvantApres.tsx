@@ -19,17 +19,25 @@ export function AvantApres() {
 
   useEffect(() => {
     if (!dragging) return;
-    const onMove = (e: MouseEvent) => move(e.clientX);
-    const onTouch = (e: TouchEvent) => move(e.touches[0].clientX);
+    const onMove = (e: PointerEvent) => {
+      e.preventDefault();
+      move(e.clientX);
+    };
+    const onTouch = (e: TouchEvent) => {
+      e.preventDefault();
+      move(e.touches[0].clientX);
+    };
     const stop = () => setDragging(false);
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("touchmove", onTouch);
-    window.addEventListener("mouseup", stop);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("touchmove", onTouch, { passive: false });
+    window.addEventListener("pointerup", stop);
+    window.addEventListener("pointercancel", stop);
     window.addEventListener("touchend", stop);
     return () => {
-      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("pointermove", onMove);
       window.removeEventListener("touchmove", onTouch);
-      window.removeEventListener("mouseup", stop);
+      window.removeEventListener("pointerup", stop);
+      window.removeEventListener("pointercancel", stop);
       window.removeEventListener("touchend", stop);
     };
   }, [dragging, move]);
