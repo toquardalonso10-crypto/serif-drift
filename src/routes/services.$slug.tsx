@@ -132,10 +132,10 @@ function ServicePage() {
                   Demander un devis
                 </Link>
                 <a
-                  href="tel:+33546000000"
+                  href="tel:+33778260088"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-bark/20 px-5 py-3 text-sm font-semibold text-bark transition-colors hover:bg-bark/5"
                 >
-                  <Phone className="h-4 w-4" /> 05 46 00 00 00
+                  <Phone className="h-4 w-4" /> 07 78 26 00 88
                 </a>
               </div>
             </div>

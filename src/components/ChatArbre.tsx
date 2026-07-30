@@ -78,7 +78,7 @@ export function ChatArbre() {
           role: "assistant",
           content:
             data.text ??
-            "Je n'arrive pas à répondre là tout de suite — appelez-nous au 05 46 00 00 00 !",
+            "Je n'arrive pas à répondre là tout de suite — appelez-nous au 07 78 26 00 88 !",
         },
       ]);
     } catch {
@@ -87,7 +87,7 @@ export function ChatArbre() {
         {
           role: "assistant",
           content:
-            "Petite branche cassée dans la connexion… Réessayez ou appelez le 05 46 00 00 00.",
+            "Petite branche cassée dans la connexion… Réessayez ou appelez le 07 78 26 00 88.",
         },
       ]);
     } finally {
