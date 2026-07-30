@@ -65,33 +65,36 @@ export function AvantApres() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
           ref={ref}
-          onMouseDown={(e) => {
+          onPointerDown={(e) => {
+            e.preventDefault();
+            (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
             setDragging(true);
             move(e.clientX);
           }}
-          onTouchStart={(e) => {
-            setDragging(true);
-            move(e.touches[0].clientX);
-          }}
+          onDragStart={(e) => e.preventDefault()}
+          style={{ touchAction: "none" }}
           className="relative aspect-[16/10] w-full cursor-ew-resize select-none overflow-hidden rounded-xl border-gold-hairline shadow-luxe ring-1 ring-bark/10"
         >
           <img
             src={apres}
             alt="La haie de laurier après la taille : arêtes droites et allée nettoyée"
             loading="lazy"
+            draggable={false}
             width={1408}
             height={912}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover"
           />
           <img
             src={avant}
             alt="La haie de laurier avant la taille : pousses désordonnées et silhouette irrégulière"
             loading="lazy"
+            draggable={false}
             width={1408}
             height={912}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover"
             style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
           />
+
 
           <span className="text-luxe-eyebrow pointer-events-none absolute left-5 top-5 rounded-full bg-bark/70 px-4 py-1.5 text-cream backdrop-blur">
             Avant
