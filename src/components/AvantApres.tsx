@@ -19,17 +19,25 @@ export function AvantApres() {
 
   useEffect(() => {
     if (!dragging) return;
-    const onMove = (e: MouseEvent) => move(e.clientX);
-    const onTouch = (e: TouchEvent) => move(e.touches[0].clientX);
+    const onMove = (e: PointerEvent) => {
+      e.preventDefault();
+      move(e.clientX);
+    };
+    const onTouch = (e: TouchEvent) => {
+      e.preventDefault();
+      move(e.touches[0].clientX);
+    };
     const stop = () => setDragging(false);
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("touchmove", onTouch);
-    window.addEventListener("mouseup", stop);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("touchmove", onTouch, { passive: false });
+    window.addEventListener("pointerup", stop);
+    window.addEventListener("pointercancel", stop);
     window.addEventListener("touchend", stop);
     return () => {
-      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("pointermove", onMove);
       window.removeEventListener("touchmove", onTouch);
-      window.removeEventListener("mouseup", stop);
+      window.removeEventListener("pointerup", stop);
+      window.removeEventListener("pointercancel", stop);
       window.removeEventListener("touchend", stop);
     };
   }, [dragging, move]);
@@ -57,33 +65,36 @@ export function AvantApres() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
           ref={ref}
-          onMouseDown={(e) => {
+          onPointerDown={(e) => {
+            e.preventDefault();
+            (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
             setDragging(true);
             move(e.clientX);
           }}
-          onTouchStart={(e) => {
-            setDragging(true);
-            move(e.touches[0].clientX);
-          }}
+          onDragStart={(e) => e.preventDefault()}
+          style={{ touchAction: "none" }}
           className="relative aspect-[16/10] w-full cursor-ew-resize select-none overflow-hidden rounded-xl border-gold-hairline shadow-luxe ring-1 ring-bark/10"
         >
           <img
             src={apres}
             alt="La haie de laurier après la taille : arêtes droites et allée nettoyée"
             loading="lazy"
+            draggable={false}
             width={1408}
             height={912}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover"
           />
           <img
             src={avant}
             alt="La haie de laurier avant la taille : pousses désordonnées et silhouette irrégulière"
             loading="lazy"
+            draggable={false}
             width={1408}
             height={912}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover"
             style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
           />
+
 
           <span className="text-luxe-eyebrow pointer-events-none absolute left-5 top-5 rounded-full bg-bark/70 px-4 py-1.5 text-cream backdrop-blur">
             Avant
