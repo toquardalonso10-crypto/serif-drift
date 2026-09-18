@@ -30,6 +30,14 @@ import terrasseEscalier from "@/assets/chantiers/8181964303219953796.JPG.asset.j
 import parkingCamion from "@/assets/chantiers/8335856582033932758.JPG.asset.json";
 import parkingBordure from "@/assets/chantiers/8839002591003358246.JPG.asset.json";
 import terrasseFinie from "@/assets/chantiers/9175435763877632901.JPG.asset.json";
+import apresArbre from "@/assets/chantiers/8594744821326299373.JPG.asset.json";
+import apresTerrasseBanc from "@/assets/chantiers/6241037421597806270.JPG.asset.json";
+import apresAllee from "@/assets/chantiers/6018892530315471102.JPG.asset.json";
+import apresCoinCanape from "@/assets/chantiers/4302373466207662167.JPG.asset.json";
+import apresBuddha from "@/assets/chantiers/3204633800373579774.JPG.asset.json";
+import apresEscalier from "@/assets/chantiers/3063885790608259184.JPG.asset.json";
+import apresLanterne from "@/assets/chantiers/2807382968891335152.JPG.asset.json";
+import apresVueMaison from "@/assets/chantiers/2427864169746838369.JPG.asset.json";
 
 type Photo = { src: string; alt: string };
 type Chantier = { nom: string; description: string; photos: Photo[] };
@@ -65,6 +73,14 @@ const CHANTIERS: Chantier[] = [
       { src: jardinCoin.url, alt: "Coin de jardin nettoyé près d'une clôture" },
       { src: courPropre.url, alt: "Cour et terrasse nettoyées après intervention" },
       { src: terrasseFinie.url, alt: "Terrasse et jardin remis au propre après intervention" },
+      { src: apresArbre.url, alt: "Arbre dégagé avec galets blancs après la taille" },
+      { src: apresTerrasseBanc.url, alt: "Terrasse en bois et banc remis à neuf après le chantier" },
+      { src: apresAllee.url, alt: "Allée en bois dégagée et arbres taillés après intervention" },
+      { src: apresCoinCanape.url, alt: "Coin salon de jardin dégagé le long du mur en pierre" },
+      { src: apresBuddha.url, alt: "Coin zen avec galets blancs après remise en état" },
+      { src: apresEscalier.url, alt: "Escalier en bois et terrasse nettoyés après le chantier" },
+      { src: apresLanterne.url, alt: "Palissade et massif de galets remis au propre" },
+      { src: apresVueMaison.url, alt: "Vue d'ensemble du jardin et de la terrasse après intervention" },
     ],
   },
   {
