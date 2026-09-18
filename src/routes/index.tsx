@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { Meteo } from "@/components/Meteo";
 import { Services } from "@/components/Services";
 import { AvantApres } from "@/components/AvantApres";
+import { GalerieChantiers } from "@/components/GalerieChantiers";
 import { Abonnements } from "@/components/Abonnements";
 import { Avis } from "@/components/Avis";
 
@@ -21,7 +22,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Élagage, abattage et démontage par cordes en Charente-Maritime. Devis gratuit signé en ligne, météo des chantiers en direct, avis clients 4,9/5.",
+          "Élagage, abattage et démontage par cordes en Charente-Maritime. Devis gratuit, météo des chantiers en direct, avis clients 4,9/5.",
       },
       {
         property: "og:title",
@@ -46,6 +47,7 @@ function Index() {
       <Meteo />
       <Services />
       <AvantApres />
+      <GalerieChantiers />
       <Abonnements />
       <Avis />
 
