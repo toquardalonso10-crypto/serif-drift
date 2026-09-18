@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { Phone, Leaf, Star } from "lucide-react";
 import { SerifGlow } from "./SerifGlow";
 import { BandeauPaiement } from "./BandeauPaiement";
