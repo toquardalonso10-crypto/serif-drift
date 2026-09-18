@@ -45,8 +45,10 @@ const CHANTIERS = [
     photos: [
       { src: parkingZone.url, alt: "Abords de parking de zone commerciale envahis d'aiguilles de pin" },
       { src: parkingAiguilles.url, alt: "Bordure de parking couverte d'aiguilles de pin avant nettoyage" },
+      { src: parkingBordure.url, alt: "Bordure de parking encombrée d'aiguilles de pin et de terre" },
       { src: parkingTas.url, alt: "Tas d'aiguilles de pin ramassées le long de la bordure" },
       { src: brouetteDechets.url, alt: "Brouette remplie de déchets verts ramassés sur le parking" },
+      { src: parkingCamion.url, alt: "Déchets verts regroupés avant chargement dans la camionnette" },
       { src: camionChantier.url, alt: "Camionnette ETS Toquard & Fils sur le chantier de nettoyage" },
       { src: parkingPropre.url, alt: "Bordure de parking dégagée après le passage de l'équipe" },
     ],
