@@ -38,6 +38,13 @@ import apresBuddha from "@/assets/chantiers/3204633800373579774.JPG.asset.json";
 import apresEscalier from "@/assets/chantiers/3063885790608259184.JPG.asset.json";
 import apresLanterne from "@/assets/chantiers/2807382968891335152.JPG.asset.json";
 import apresVueMaison from "@/assets/chantiers/2427864169746838369.JPG.asset.json";
+import gazonAvantBord from "@/assets/chantiers/7105254917889729745.JPG.asset.json";
+import gazonAvantTerrain from "@/assets/chantiers/6502508346817705227.JPG.asset.json";
+import gazonAvantNu from "@/assets/chantiers/3296013799713178748.JPG.asset.json";
+import gazonAvantSol from "@/assets/chantiers/3025886607615281234.JPG.asset.json";
+import gazonApresMur from "@/assets/chantiers/9001279394635749674.JPG.asset.json";
+import gazonApresMaison from "@/assets/chantiers/2965907283650331547.JPG.asset.json";
+import gazonApresLarge from "@/assets/chantiers/456064501487004607.JPG.asset.json";
 
 type Photo = { src: string; alt: string };
 type Chantier = { nom: string; description: string; photos: Photo[] };
@@ -93,6 +100,19 @@ const CHANTIERS: Chantier[] = [
       { src: toitureBache.url, alt: "Toiture recouverte d'une membrane noire pendant le chantier" },
       { src: toitureFinie.url, alt: "Toiture d'abri remise au propre après intervention" },
       { src: toitureNeuve.url, alt: "Nouvelle toiture terminée vue depuis le faîtage" },
+    ],
+  },
+  {
+    nom: "Pelouse complète — préparation et pose de gazon",
+    description: "Terrain nu nettoyé et nivelé, puis gazon posé pour une pelouse nette et régulière.",
+    photos: [
+      { src: gazonAvantBord.url, alt: "Bord de terrain à nettoyer avant la pose du gazon" },
+      { src: gazonAvantTerrain.url, alt: "Terrain en cours de préparation avant engazonnement" },
+      { src: gazonAvantNu.url, alt: "Sol nu et caillouteux devant la maison avant les travaux" },
+      { src: gazonAvantSol.url, alt: "Terrain décaissé et nivelé avant la pose du gazon" },
+      { src: gazonApresMur.url, alt: "Pelouse fraîchement posée le long du muret" },
+      { src: gazonApresMaison.url, alt: "Pelouse terminée devant la maison après la pose" },
+      { src: gazonApresLarge.url, alt: "Vue d'ensemble de la pelouse après la pose du gazon" },
     ],
   },
 ];
