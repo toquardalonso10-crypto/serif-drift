@@ -25,6 +25,10 @@ import parkingTas from "@/assets/chantiers/7637574324330397165.JPG.asset.json";
 import camionChantier from "@/assets/chantiers/7858830637183545872.JPG.asset.json";
 import haieEnvahissante from "@/assets/chantiers/8013373355619148722.JPG.asset.json";
 import toitureGouttiere from "@/assets/chantiers/8105468604482816334.JPG.asset.json";
+import terrasseEscalier from "@/assets/chantiers/8181964303219953796.JPG.asset.json";
+import parkingCamion from "@/assets/chantiers/8335856582033932758.JPG.asset.json";
+import parkingBordure from "@/assets/chantiers/8839002591003358246.JPG.asset.json";
+import terrasseFinie from "@/assets/chantiers/9175435763877632901.JPG.asset.json";
 
 const CHANTIERS = [
   {
