@@ -45,6 +45,14 @@ import gazonAvantSol from "@/assets/chantiers/3025886607615281234.JPG.asset.json
 import gazonApresMur from "@/assets/chantiers/9001279394635749674.JPG.asset.json";
 import gazonApresMaison from "@/assets/chantiers/2965907283650331547.JPG.asset.json";
 import gazonApresLarge from "@/assets/chantiers/456064501487004607.JPG.asset.json";
+import ch5Broyage1 from "@/assets/chantiers/ch5-v1_1.jpg.asset.json";
+import ch5Broyage2 from "@/assets/chantiers/ch5-v1_2.jpg.asset.json";
+import ch5Broyage3 from "@/assets/chantiers/ch5-v1_3.jpg.asset.json";
+import ch5Branches1 from "@/assets/chantiers/ch5-v2_1.jpg.asset.json";
+import ch5Branches2 from "@/assets/chantiers/ch5-v2_2.jpg.asset.json";
+import ch5Branches3 from "@/assets/chantiers/ch5-v2_3.jpg.asset.json";
+import ch5Apres1 from "@/assets/chantiers/ch5-apres-1.jpg.asset.json";
+import ch5Apres2 from "@/assets/chantiers/ch5-apres-2.jpg.asset.json";
 
 type Photo = { src: string; alt: string };
 type Chantier = { nom: string; description: string; photos: Photo[] };
