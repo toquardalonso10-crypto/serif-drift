@@ -136,6 +136,8 @@ const CHANTIERS: Chantier[] = [
       { src: ch5Broyage1.url, alt: "Broyeur installé sur le chantier pour les déchets verts" },
       { src: ch5Broyage2.url, alt: "Branches introduites dans le broyeur par l'équipe" },
       { src: ch5Broyage3.url, alt: "Broyage des branches et nettoyage du terrain" },
+      { src: ch5Broyage4.url, alt: "Branches amenées au broyeur de branches sur le chantier" },
+      { src: ch5Broyage5.url, alt: "Introduction des branchages dans le broyeur par l'équipe" },
       { src: ch5Apres1.url, alt: "Terrain entièrement dégagé et nivelé après les travaux" },
       { src: ch5Apres2.url, alt: "Vue du terrain remis à nu avec le panneau ETS Toquard & Fils" },
     ],
