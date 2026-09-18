@@ -115,6 +115,8 @@ const CHANTIERS: Chantier[] = [
       { src: gazonApresLarge.url, alt: "Vue d'ensemble de la pelouse après la pose du gazon" },
     ],
   },
+];
+
 
 export const Route = createFileRoute("/realisations")({
   head: () => ({
