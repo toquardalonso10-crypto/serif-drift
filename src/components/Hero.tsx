@@ -28,6 +28,12 @@ export function Hero() {
             </a>
             <a
               className="transition-opacity hover:opacity-60"
+              href="#realisations"
+            >
+              Réalisations
+            </a>
+            <a
+              className="transition-opacity hover:opacity-60"
               href="#abonnements"
             >
               Abonnements

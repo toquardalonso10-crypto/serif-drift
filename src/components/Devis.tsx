@@ -1,67 +1,17 @@
-import { useRef, useState, type FormEvent } from "react";
+import { type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Eraser, PenLine, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { toast } from "sonner";
 import { SerifGlow } from "./SerifGlow";
 
 export function Devis() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const drawing = useRef(false);
-  const [signe, setSigne] = useState(false);
-
-  const point = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    const canvas = canvasRef.current!;
-    const rect = canvas.getBoundingClientRect();
-    return {
-      x: (e.clientX - rect.left) * (canvas.width / rect.width),
-      y: (e.clientY - rect.top) * (canvas.height / rect.height),
-    };
-  };
-
-  const start = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    const ctx = canvasRef.current!.getContext("2d")!;
-    const p = point(e);
-    ctx.strokeStyle = "#3a2d20";
-    ctx.lineWidth = 2.4;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    ctx.beginPath();
-    ctx.moveTo(p.x, p.y);
-    drawing.current = true;
-    setSigne(true);
-    canvasRef.current!.setPointerCapture(e.pointerId);
-  };
-
-  const draw = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    if (!drawing.current) return;
-    const ctx = canvasRef.current!.getContext("2d")!;
-    const p = point(e);
-    ctx.lineTo(p.x, p.y);
-    ctx.stroke();
-  };
-
-  const stop = () => {
-    drawing.current = false;
-  };
-
-  const effacer = () => {
-    const canvas = canvasRef.current!;
-    canvas.getContext("2d")!.clearRect(0, 0, canvas.width, canvas.height);
-    setSigne(false);
-  };
-
   const envoyer = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!signe) {
-      toast.error("Merci de signer dans le cadre avant d'envoyer.");
-      return;
-    }
     const data = new FormData(e.currentTarget);
     toast.success(
       `Merci ${data.get("prenom")} ! Votre demande est partie, on vous rappelle sous 24 h.`,
     );
     e.currentTarget.reset();
-    effacer();
   };
 
   const champ =
@@ -75,7 +25,7 @@ export function Devis() {
             Devis gratuit &amp; sans engagement
           </p>
           <h2 className="mt-3 flex flex-wrap items-baseline gap-3 text-4xl font-medium text-cream md:text-5xl">
-            Signez votre
+            Demandez votre
             <SerifGlow
               word="devis"
               fontSize={56}
@@ -87,9 +37,9 @@ export function Devis() {
             />
           </h2>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream/65">
-            Remplissez vos coordonnées, décrivez le chantier et apposez votre
-            signature au doigt ou à la souris. Nous passons mesurer sur place,
-            puis vous recevez le devis définitif par mail sous 48 h.
+            Laissez vos coordonnées et décrivez le chantier. Nous passons
+            mesurer sur place, puis vous recevez le devis définitif par mail
+            sous 48 h.
           </p>
           <ul className="mt-8 space-y-3 text-sm text-cream/80">
             {[
@@ -187,36 +137,6 @@ export function Devis() {
             />
           </div>
 
-          <div className="mt-6">
-            <label className="mb-1.5 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-ink">
-              <PenLine className="h-4 w-4" /> Votre signature (bon pour accord)
-            </label>
-            <div className="relative rounded-md border-2 border-dashed border-bark/25 bg-card">
-              <canvas
-                ref={canvasRef}
-                width={720}
-                height={200}
-                onPointerDown={start}
-                onPointerMove={draw}
-                onPointerUp={stop}
-                onPointerLeave={stop}
-                className="h-[160px] w-full touch-none rounded-md"
-              />
-              {!signe && (
-                <span className="pointer-events-none absolute inset-0 grid place-items-center font-serif text-lg text-ink/35">
-                  Signez ici
-                </span>
-              )}
-            </div>
-            <button
-              type="button"
-              onClick={effacer}
-              className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-ink transition-opacity hover:opacity-60"
-            >
-              <Eraser className="h-3.5 w-3.5" /> Effacer la signature
-            </button>
-          </div>
-
           <label className="mt-5 flex items-start gap-2 text-xs leading-relaxed text-ink">
             <input type="checkbox" required className="mt-0.5 accent-[var(--forest)]" />
             J'accepte que Ets Toquard &amp; Fils utilise ces informations pour me
@@ -227,7 +147,7 @@ export function Devis() {
             type="submit"
             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-sunset px-6 py-3.5 text-sm font-bold text-bark shadow-rustic transition-transform hover:-translate-y-0.5"
           >
-            <Send className="h-4 w-4" /> Envoyer ma demande signée
+            <Send className="h-4 w-4" /> Envoyer ma demande
           </button>
         </motion.form>
       </div>
