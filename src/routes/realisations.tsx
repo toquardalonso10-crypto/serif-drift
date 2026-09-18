@@ -11,6 +11,12 @@ import terrasseJardin from "@/assets/chantiers/3101250754179368142.JPG.asset.jso
 import toitureFinie from "@/assets/chantiers/3230992284909895499.JPG.asset.json";
 import toitureAvant from "@/assets/chantiers/3316497891751757143.JPG.asset.json";
 import jardinPalmiers from "@/assets/chantiers/3511026877376414153.JPG.asset.json";
+import toitureBache from "@/assets/chantiers/3855275166815502556.JPG.asset.json";
+import toitureDepose from "@/assets/chantiers/3999426942201448836.JPG.asset.json";
+import toitureNeuve from "@/assets/chantiers/4165498030261161568.JPG.asset.json";
+import parkingAiguilles from "@/assets/chantiers/4720270744456035277.JPG.asset.json";
+import brouetteDechets from "@/assets/chantiers/4984049865507099095.JPG.asset.json";
+import parkingPropre from "@/assets/chantiers/5023167172933604160.JPG.asset.json";
 
 const CHANTIERS = [
   {
@@ -19,6 +25,15 @@ const CHANTIERS = [
     photos: [
       { src: siteNozLarge.url, alt: "Parking et espaces verts avant entretien chez Noz" },
       { src: siteNozPropre.url, alt: "Espaces verts entretenus devant le magasin Noz" },
+    ],
+  },
+  {
+    nom: "Parking de zone commerciale — nettoyage des abords",
+    description: "Aiguilles de pin et déchets verts ramassés le long des bordures, places rendues nettes.",
+    photos: [
+      { src: parkingAiguilles.url, alt: "Bordure de parking couverte d'aiguilles de pin avant nettoyage" },
+      { src: brouetteDechets.url, alt: "Brouette remplie de déchets verts ramassés sur le parking" },
+      { src: parkingPropre.url, alt: "Bordure de parking dégagée après le passage de l'équipe" },
     ],
   },
   {
@@ -32,11 +47,14 @@ const CHANTIERS = [
     ],
   },
   {
-    nom: "Abri et toiture — dégagement du chantier",
-    description: "Zone préparée, ancienne couverture retirée et nouvelle tôle posée.",
+    nom: "Abri et toiture — dépose et remise à neuf",
+    description: "Ancienne couverture envahie de végétation déposée, zone dégagée puis nouvelle toiture posée.",
     photos: [
       { src: toitureAvant.url, alt: "Toiture d'abri avant intervention" },
+      { src: toitureDepose.url, alt: "Ancienne couverture envahie de racines en cours de dépose" },
+      { src: toitureBache.url, alt: "Toiture recouverte d'une membrane noire pendant le chantier" },
       { src: toitureFinie.url, alt: "Toiture d'abri remise au propre après intervention" },
+      { src: toitureNeuve.url, alt: "Nouvelle toiture terminée vue depuis le faîtage" },
     ],
   },
 ];
