@@ -45,16 +45,6 @@ import gazonAvantSol from "@/assets/chantiers/3025886607615281234.JPG.asset.json
 import gazonApresMur from "@/assets/chantiers/9001279394635749674.JPG.asset.json";
 import gazonApresMaison from "@/assets/chantiers/2965907283650331547.JPG.asset.json";
 import gazonApresLarge from "@/assets/chantiers/456064501487004607.JPG.asset.json";
-import ch5Broyage1 from "@/assets/chantiers/ch5-v1_1.jpg.asset.json";
-import ch5Broyage2 from "@/assets/chantiers/ch5-v1_2.jpg.asset.json";
-import ch5Broyage3 from "@/assets/chantiers/ch5-v1_3.jpg.asset.json";
-import ch5Branches1 from "@/assets/chantiers/ch5-v2_1.jpg.asset.json";
-import ch5Branches2 from "@/assets/chantiers/ch5-v2_2.jpg.asset.json";
-import ch5Branches3 from "@/assets/chantiers/ch5-v2_3.jpg.asset.json";
-import ch5Broyage4 from "@/assets/chantiers/ch5-v3_1.jpg.asset.json";
-import ch5Broyage5 from "@/assets/chantiers/ch5-v3_2.jpg.asset.json";
-import ch5Apres1 from "@/assets/chantiers/ch5-apres-1.jpg.asset.json";
-import ch5Apres2 from "@/assets/chantiers/ch5-apres-2.jpg.asset.json";
 
 type Photo = { src: string; alt: string };
 type Chantier = { nom: string; description: string; photos: Photo[] };
@@ -125,24 +115,6 @@ const CHANTIERS: Chantier[] = [
       { src: gazonApresLarge.url, alt: "Vue d'ensemble de la pelouse après la pose du gazon" },
     ],
   },
-  {
-    nom: "Terrain boisé — abattage, broyage et remise à nu",
-    description:
-      "Arbres et broussailles coupés puis broyés sur place, branches évacuées : le terrain est entièrement dégagé et nivelé.",
-    photos: [
-      { src: ch5Branches1.url, alt: "Terrain encombré de branches coupées avant évacuation" },
-      { src: ch5Branches2.url, alt: "Tas de branches et de résineux abattus sur le terrain" },
-      { src: ch5Branches3.url, alt: "Végétation coupée en attente de broyage" },
-      { src: ch5Broyage1.url, alt: "Broyeur installé sur le chantier pour les déchets verts" },
-      { src: ch5Broyage2.url, alt: "Branches introduites dans le broyeur par l'équipe" },
-      { src: ch5Broyage3.url, alt: "Broyage des branches et nettoyage du terrain" },
-      { src: ch5Broyage4.url, alt: "Branches amenées au broyeur de branches sur le chantier" },
-      { src: ch5Broyage5.url, alt: "Introduction des branchages dans le broyeur par l'équipe" },
-      { src: ch5Apres1.url, alt: "Terrain entièrement dégagé et nivelé après les travaux" },
-      { src: ch5Apres2.url, alt: "Vue du terrain remis à nu avec le panneau ETS Toquard & Fils" },
-    ],
-  },
-];
 
 export const Route = createFileRoute("/realisations")({
   head: () => ({
