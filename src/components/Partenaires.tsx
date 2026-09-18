@@ -6,8 +6,6 @@ const PARTENAIRES = [
   { nom: "Leclerc", style: "font-extrabold uppercase tracking-[0.12em] text-forest" },
   { nom: "Super U", style: "font-extrabold uppercase tracking-wide text-ochre" },
   { nom: "Weldom", style: "font-serif font-bold text-moss" },
-  { nom: "Bricomarché", style: "font-bold uppercase tracking-[0.18em] text-bark/80" },
-  { nom: "Gamm Vert", style: "font-serif italic text-forest/90" },
 ];
 
 export function Partenaires() {

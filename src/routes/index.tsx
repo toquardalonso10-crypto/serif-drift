@@ -46,6 +46,7 @@ function Index() {
     <main id="top">
       <Hero />
       <Meteo />
+      <Partenaires />
       <Services />
       <AvantApres />
       <GalerieTeaser />
