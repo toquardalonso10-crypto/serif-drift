@@ -51,6 +51,8 @@ import ch5Broyage3 from "@/assets/chantiers/ch5-v1_3.jpg.asset.json";
 import ch5Branches1 from "@/assets/chantiers/ch5-v2_1.jpg.asset.json";
 import ch5Branches2 from "@/assets/chantiers/ch5-v2_2.jpg.asset.json";
 import ch5Branches3 from "@/assets/chantiers/ch5-v2_3.jpg.asset.json";
+import ch5Broyage4 from "@/assets/chantiers/ch5-v3_1.jpg.asset.json";
+import ch5Broyage5 from "@/assets/chantiers/ch5-v3_2.jpg.asset.json";
 import ch5Apres1 from "@/assets/chantiers/ch5-apres-1.jpg.asset.json";
 import ch5Apres2 from "@/assets/chantiers/ch5-apres-2.jpg.asset.json";
 
