@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { ArrowLeft, Images } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 
 import jardinCoin from "@/assets/chantiers/1162378581599593768_2.JPG.asset.json";
 import siteNozLarge from "@/assets/chantiers/1381251436636874893.JPG.asset.json";
@@ -30,63 +31,33 @@ import parkingCamion from "@/assets/chantiers/8335856582033932758.JPG.asset.json
 import parkingBordure from "@/assets/chantiers/8839002591003358246.JPG.asset.json";
 import terrasseFinie from "@/assets/chantiers/9175435763877632901.JPG.asset.json";
 
-const CHANTIERS = [
-  {
-    nom: "Entretien professionnel — Noz",
-    description: "Espaces extérieurs, bordures et abords de parking remis au propre.",
-    photos: [
-      { src: siteNozLarge.url, alt: "Parking et espaces verts avant entretien chez Noz" },
-      { src: siteNozPropre.url, alt: "Espaces verts entretenus devant le magasin Noz" },
-    ],
-  },
-  {
-    nom: "Parking de zone commerciale — nettoyage des abords",
-    description: "Aiguilles de pin et déchets verts ramassés le long des bordures, places rendues nettes.",
-    photos: [
-      { src: parkingZone.url, alt: "Abords de parking de zone commerciale envahis d'aiguilles de pin" },
-      { src: parkingAiguilles.url, alt: "Bordure de parking couverte d'aiguilles de pin avant nettoyage" },
-      { src: parkingBordure.url, alt: "Bordure de parking encombrée d'aiguilles de pin et de terre" },
-      { src: parkingTas.url, alt: "Tas d'aiguilles de pin ramassées le long de la bordure" },
-      { src: brouetteDechets.url, alt: "Brouette remplie de déchets verts ramassés sur le parking" },
-      { src: parkingCamion.url, alt: "Déchets verts regroupés avant chargement dans la camionnette" },
-      { src: camionChantier.url, alt: "Camionnette ETS Toquard & Fils sur le chantier de nettoyage" },
-      { src: parkingPropre.url, alt: "Bordure de parking dégagée après le passage de l'équipe" },
-    ],
-  },
-  {
-    nom: "Jardin de ville — nettoyage complet",
-    description: "Passage, massifs, palmiers et coin terrasse dégagés avec soin.",
-    photos: [
-      { src: terrasseJardin.url, alt: "Allée de jardin et terrasse avant remise en état" },
-      { src: jardinPalmiers.url, alt: "Massif de palmiers et végétation à nettoyer" },
-      { src: jardinMassif.url, alt: "Massif dense dans un jardin de ville" },
-      { src: jardinCoin.url, alt: "Coin de jardin nettoyé près d'une clôture" },
-    ],
-  },
-  {
-    nom: "Terrasse et cour — débroussaillage et remise au propre",
-    description: "Végétation envahissante coupée, feuilles et terrasse bois nettoyées jusqu'à la cour dégagée.",
-    photos: [
-      { src: haieEnvahissante.url, alt: "Végétation envahissante au-dessus d'une terrasse en bois" },
-      { src: escalierFeuilles.url, alt: "Escalier et terrasse couverts de feuilles avant nettoyage" },
-      { src: terrasseEscalier.url, alt: "Escalier de terrasse en bois dégagé pendant le chantier" },
-      { src: terrasseClim.url, alt: "Terrasse en bois dégagée le long du mur" },
-      { src: courPropre.url, alt: "Cour et terrasse nettoyées après intervention" },
-      { src: terrasseFinie.url, alt: "Terrasse et jardin remis au propre après intervention" },
-    ],
-  },
-  {
-    nom: "Abri et toiture — dépose et remise à neuf",
-    description: "Ancienne couverture envahie de végétation déposée, zone dégagée puis nouvelle toiture posée.",
-    photos: [
-      { src: toitureAvant.url, alt: "Toiture d'abri avant intervention" },
-      { src: toitureGouttiere.url, alt: "Gouttière et couverture encombrées de terre et de racines" },
-      { src: toitureDepose.url, alt: "Ancienne couverture envahie de racines en cours de dépose" },
-      { src: toitureBache.url, alt: "Toiture recouverte d'une membrane noire pendant le chantier" },
-      { src: toitureFinie.url, alt: "Toiture d'abri remise au propre après intervention" },
-      { src: toitureNeuve.url, alt: "Nouvelle toiture terminée vue depuis le faîtage" },
-    ],
-  },
+const PHOTOS = [
+  { src: siteNozLarge.url, alt: "Parking et espaces verts avant entretien chez Noz" },
+  { src: siteNozPropre.url, alt: "Espaces verts entretenus devant le magasin Noz" },
+  { src: parkingZone.url, alt: "Abords de parking de zone commerciale envahis d'aiguilles de pin" },
+  { src: parkingAiguilles.url, alt: "Bordure de parking couverte d'aiguilles de pin avant nettoyage" },
+  { src: parkingBordure.url, alt: "Bordure de parking encombrée d'aiguilles de pin et de terre" },
+  { src: parkingTas.url, alt: "Tas d'aiguilles de pin ramassées le long de la bordure" },
+  { src: brouetteDechets.url, alt: "Brouette remplie de déchets verts ramassés sur le parking" },
+  { src: parkingCamion.url, alt: "Déchets verts regroupés avant chargement dans la camionnette" },
+  { src: camionChantier.url, alt: "Camionnette ETS Toquard & Fils sur le chantier de nettoyage" },
+  { src: parkingPropre.url, alt: "Bordure de parking dégagée après le passage de l'équipe" },
+  { src: terrasseJardin.url, alt: "Allée de jardin et terrasse avant remise en état" },
+  { src: jardinPalmiers.url, alt: "Massif de palmiers et végétation à nettoyer" },
+  { src: jardinMassif.url, alt: "Massif dense dans un jardin de ville" },
+  { src: jardinCoin.url, alt: "Coin de jardin nettoyé près d'une clôture" },
+  { src: haieEnvahissante.url, alt: "Végétation envahissante au-dessus d'une terrasse en bois" },
+  { src: escalierFeuilles.url, alt: "Escalier et terrasse couverts de feuilles avant nettoyage" },
+  { src: terrasseEscalier.url, alt: "Escalier de terrasse en bois dégagé pendant le chantier" },
+  { src: terrasseClim.url, alt: "Terrasse en bois dégagée le long du mur" },
+  { src: courPropre.url, alt: "Cour et terrasse nettoyées après intervention" },
+  { src: terrasseFinie.url, alt: "Terrasse et jardin remis au propre après intervention" },
+  { src: toitureAvant.url, alt: "Toiture d'abri avant intervention" },
+  { src: toitureGouttiere.url, alt: "Gouttière et couverture encombrées de terre et de racines" },
+  { src: toitureDepose.url, alt: "Ancienne couverture envahie de racines en cours de dépose" },
+  { src: toitureBache.url, alt: "Toiture recouverte d'une membrane noire pendant le chantier" },
+  { src: toitureFinie.url, alt: "Toiture d'abri remise au propre après intervention" },
+  { src: toitureNeuve.url, alt: "Nouvelle toiture terminée vue depuis le faîtage" },
 ];
 
 export const Route = createFileRoute("/realisations")({
@@ -117,9 +88,32 @@ export const Route = createFileRoute("/realisations")({
 });
 
 function GaleriePage() {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const total = PHOTOS.length;
+
+  const aller = useCallback(
+    (sens: number) => {
+      setDirection(sens);
+      setIndex((courant) => (courant + sens + total) % total);
+    },
+    [total],
+  );
+
+  useEffect(() => {
+    const surTouche = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") aller(-1);
+      if (e.key === "ArrowRight") aller(1);
+    };
+    window.addEventListener("keydown", surTouche);
+    return () => window.removeEventListener("keydown", surTouche);
+  }, [aller]);
+
+  const photo = PHOTOS[index];
+
   return (
     <main className="min-h-screen bg-bark paper-grain">
-      <div className="mx-auto max-w-7xl px-5 pt-16 pb-24 md:px-8">
+      <div className="mx-auto max-w-5xl px-5 pt-16 pb-24 md:px-8">
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-cream/70 transition-colors hover:text-ochre"
@@ -140,61 +134,89 @@ function GaleriePage() {
           </p>
         </div>
 
-        <div className="mt-14 space-y-12">
-          {CHANTIERS.map((chantier, index) => (
-            <motion.section
-              key={chantier.nom}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.55, delay: index * 0.08 }}
-              className="border-t border-cream/15 pt-8"
-            >
-              <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-                <div>
-                  <p className="text-luxe-eyebrow text-ochre">Chantier {index + 1}</p>
-                  <h2 className="mt-2 text-2xl font-medium text-cream md:text-3xl">
-                    {chantier.nom}
-                  </h2>
-                </div>
-                <p className="max-w-lg text-sm leading-relaxed text-cream/65">
-                  {chantier.description}
-                </p>
-              </div>
+        {/* Carrousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+          className="mt-12"
+        >
+          <div className="relative overflow-hidden rounded-2xl border-gold-hairline bg-card/50 shadow-rustic">
+            <div className="relative aspect-[4/3] w-full bg-cream/10 md:aspect-[16/9]">
+              <AnimatePresence initial={false} custom={direction}>
+                <motion.img
+                  key={photo.src}
+                  src={photo.src}
+                  alt={photo.alt}
+                  draggable={false}
+                  custom={direction}
+                  initial={{ opacity: 0, x: direction * 60 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: direction * -60 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </AnimatePresence>
 
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {chantier.photos.map((photo, photoIndex) => (
-                  <figure
-                    key={photo.src}
-                    className={`group overflow-hidden rounded-xl border-gold-hairline bg-card/50 shadow-rustic ${
-                      chantier.photos.length === 2 ? "lg:col-span-2" : ""
-                    }`}
-                  >
-                    <div className="relative aspect-[4/3] overflow-hidden bg-cream/10">
-                      <img
-                        src={photo.src}
-                        alt={photo.alt}
-                        loading="lazy"
-                        draggable={false}
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <span className="absolute left-3 top-3 rounded-full border border-cream/20 bg-bark/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-cream backdrop-blur-sm">
-                        Photo {photoIndex + 1}
-                      </span>
-                    </div>
-                  </figure>
-                ))}
-              </div>
-            </motion.section>
-          ))}
-        </div>
+              {/* Flèche gauche */}
+              <button
+                type="button"
+                onClick={() => aller(-1)}
+                aria-label="Photo précédente"
+                className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-cream/25 bg-bark/80 text-cream backdrop-blur-sm transition-all hover:scale-105 hover:bg-ochre hover:text-bark"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
 
-        <div className="mt-12 flex items-center gap-3 rounded-xl border border-cream/15 bg-cream/5 px-5 py-4 text-sm text-cream/65">
-          <Images className="h-5 w-5 shrink-0 text-ochre" />
-          <p>
-            Les photos sont classées par chantier. Les doublons envoyés ont été retirés pour garder une galerie propre.
-          </p>
-        </div>
+              {/* Flèche droite */}
+              <button
+                type="button"
+                onClick={() => aller(1)}
+                aria-label="Photo suivante"
+                className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-cream/25 bg-bark/80 text-cream backdrop-blur-sm transition-all hover:scale-105 hover:bg-ochre hover:text-bark"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+
+              {/* Compteur */}
+              <span className="absolute bottom-3 left-1/2 z-10 -translate-x-1/2 rounded-full border border-cream/20 bg-bark/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-cream backdrop-blur-sm">
+                {index + 1} / {total}
+              </span>
+            </div>
+
+            <p className="border-t border-cream/10 px-5 py-4 text-sm text-cream/70">
+              {photo.alt}
+            </p>
+          </div>
+
+          {/* Vignettes */}
+          <div className="mt-4 flex gap-2 overflow-x-auto pb-2">
+            {PHOTOS.map((vignette, i) => (
+              <button
+                key={vignette.src}
+                type="button"
+                onClick={() => {
+                  setDirection(i > index ? 1 : -1);
+                  setIndex(i);
+                }}
+                aria-label={`Voir la photo ${i + 1}`}
+                className={`relative h-16 w-24 shrink-0 overflow-hidden rounded-lg border transition-all ${
+                  i === index
+                    ? "border-ochre ring-2 ring-ochre/50"
+                    : "border-cream/15 opacity-60 hover:opacity-100"
+                }`}
+              >
+                <img
+                  src={vignette.src}
+                  alt=""
+                  loading="lazy"
+                  draggable={false}
+                  className="h-full w-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </main>
   );
