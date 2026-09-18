@@ -51,6 +51,8 @@ import ch5Broyage3 from "@/assets/chantiers/ch5-v1_3.jpg.asset.json";
 import ch5Branches1 from "@/assets/chantiers/ch5-v2_1.jpg.asset.json";
 import ch5Branches2 from "@/assets/chantiers/ch5-v2_2.jpg.asset.json";
 import ch5Branches3 from "@/assets/chantiers/ch5-v2_3.jpg.asset.json";
+import ch5Broyage4 from "@/assets/chantiers/ch5-v3_1.jpg.asset.json";
+import ch5Broyage5 from "@/assets/chantiers/ch5-v3_2.jpg.asset.json";
 import ch5Apres1 from "@/assets/chantiers/ch5-apres-1.jpg.asset.json";
 import ch5Apres2 from "@/assets/chantiers/ch5-apres-2.jpg.asset.json";
 
@@ -134,6 +136,8 @@ const CHANTIERS: Chantier[] = [
       { src: ch5Broyage1.url, alt: "Broyeur installé sur le chantier pour les déchets verts" },
       { src: ch5Broyage2.url, alt: "Branches introduites dans le broyeur par l'équipe" },
       { src: ch5Broyage3.url, alt: "Broyage des branches et nettoyage du terrain" },
+      { src: ch5Broyage4.url, alt: "Branches amenées au broyeur de branches sur le chantier" },
+      { src: ch5Broyage5.url, alt: "Introduction des branchages dans le broyeur par l'équipe" },
       { src: ch5Apres1.url, alt: "Terrain entièrement dégagé et nivelé après les travaux" },
       { src: ch5Apres2.url, alt: "Vue du terrain remis à nu avec le panneau ETS Toquard & Fils" },
     ],
