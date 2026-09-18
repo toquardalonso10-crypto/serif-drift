@@ -123,6 +123,21 @@ const CHANTIERS: Chantier[] = [
       { src: gazonApresLarge.url, alt: "Vue d'ensemble de la pelouse après la pose du gazon" },
     ],
   },
+  {
+    nom: "Terrain boisé — abattage, broyage et remise à nu",
+    description:
+      "Arbres et broussailles coupés puis broyés sur place, branches évacuées : le terrain est entièrement dégagé et nivelé.",
+    photos: [
+      { src: ch5Branches1.url, alt: "Terrain encombré de branches coupées avant évacuation" },
+      { src: ch5Branches2.url, alt: "Tas de branches et de résineux abattus sur le terrain" },
+      { src: ch5Branches3.url, alt: "Végétation coupée en attente de broyage" },
+      { src: ch5Broyage1.url, alt: "Broyeur installé sur le chantier pour les déchets verts" },
+      { src: ch5Broyage2.url, alt: "Branches introduites dans le broyeur par l'équipe" },
+      { src: ch5Broyage3.url, alt: "Broyage des branches et nettoyage du terrain" },
+      { src: ch5Apres1.url, alt: "Terrain entièrement dégagé et nivelé après les travaux" },
+      { src: ch5Apres2.url, alt: "Vue du terrain remis à nu avec le panneau ETS Toquard & Fils" },
+    ],
+  },
 ];
 
 export const Route = createFileRoute("/realisations")({
