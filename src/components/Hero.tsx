@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { Phone, Leaf, Star } from "lucide-react";
 import { SerifGlow } from "./SerifGlow";
 import { BandeauPaiement } from "./BandeauPaiement";
@@ -26,12 +27,12 @@ export function Hero() {
             <a className="transition-opacity hover:opacity-60" href="#chantiers">
               Avant / Après
             </a>
-            <a
+            <Link
               className="transition-opacity hover:opacity-60"
-              href="#realisations"
+              to="/realisations"
             >
               Réalisations
-            </a>
+            </Link>
             <a
               className="transition-opacity hover:opacity-60"
               href="#abonnements"
