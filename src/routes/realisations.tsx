@@ -69,8 +69,10 @@ const CHANTIERS = [
     photos: [
       { src: haieEnvahissante.url, alt: "Végétation envahissante au-dessus d'une terrasse en bois" },
       { src: escalierFeuilles.url, alt: "Escalier et terrasse couverts de feuilles avant nettoyage" },
+      { src: terrasseEscalier.url, alt: "Escalier de terrasse en bois dégagé pendant le chantier" },
       { src: terrasseClim.url, alt: "Terrasse en bois dégagée le long du mur" },
       { src: courPropre.url, alt: "Cour et terrasse nettoyées après intervention" },
+      { src: terrasseFinie.url, alt: "Terrasse et jardin remis au propre après intervention" },
     ],
   },
   {
