@@ -3,7 +3,7 @@ import { Hero } from "@/components/Hero";
 import { Meteo } from "@/components/Meteo";
 import { Services } from "@/components/Services";
 import { AvantApres } from "@/components/AvantApres";
-import { GalerieChantiers } from "@/components/GalerieChantiers";
+import { GalerieTeaser } from "@/components/GalerieTeaser";
 import { Abonnements } from "@/components/Abonnements";
 import { Avis } from "@/components/Avis";
 
@@ -47,7 +47,7 @@ function Index() {
       <Meteo />
       <Services />
       <AvantApres />
-      <GalerieChantiers />
+      <GalerieTeaser />
       <Abonnements />
       <Avis />
 
