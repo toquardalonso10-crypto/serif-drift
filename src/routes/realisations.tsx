@@ -17,6 +17,14 @@ import toitureNeuve from "@/assets/chantiers/4165498030261161568.JPG.asset.json"
 import parkingAiguilles from "@/assets/chantiers/4720270744456035277.JPG.asset.json";
 import brouetteDechets from "@/assets/chantiers/4984049865507099095.JPG.asset.json";
 import parkingPropre from "@/assets/chantiers/5023167172933604160.JPG.asset.json";
+import terrasseClim from "@/assets/chantiers/5648070188775809452.JPG.asset.json";
+import escalierFeuilles from "@/assets/chantiers/6338352100263593477.JPG.asset.json";
+import courPropre from "@/assets/chantiers/6431405152115440397.JPG.asset.json";
+import parkingZone from "@/assets/chantiers/6605058305748879580.JPG.asset.json";
+import parkingTas from "@/assets/chantiers/7637574324330397165.JPG.asset.json";
+import camionChantier from "@/assets/chantiers/7858830637183545872.JPG.asset.json";
+import haieEnvahissante from "@/assets/chantiers/8013373355619148722.JPG.asset.json";
+import toitureGouttiere from "@/assets/chantiers/8105468604482816334.JPG.asset.json";
 
 const CHANTIERS = [
   {
@@ -31,8 +39,11 @@ const CHANTIERS = [
     nom: "Parking de zone commerciale — nettoyage des abords",
     description: "Aiguilles de pin et déchets verts ramassés le long des bordures, places rendues nettes.",
     photos: [
+      { src: parkingZone.url, alt: "Abords de parking de zone commerciale envahis d'aiguilles de pin" },
       { src: parkingAiguilles.url, alt: "Bordure de parking couverte d'aiguilles de pin avant nettoyage" },
+      { src: parkingTas.url, alt: "Tas d'aiguilles de pin ramassées le long de la bordure" },
       { src: brouetteDechets.url, alt: "Brouette remplie de déchets verts ramassés sur le parking" },
+      { src: camionChantier.url, alt: "Camionnette ETS Toquard & Fils sur le chantier de nettoyage" },
       { src: parkingPropre.url, alt: "Bordure de parking dégagée après le passage de l'équipe" },
     ],
   },
@@ -47,10 +58,21 @@ const CHANTIERS = [
     ],
   },
   {
+    nom: "Terrasse et cour — débroussaillage et remise au propre",
+    description: "Végétation envahissante coupée, feuilles et terrasse bois nettoyées jusqu'à la cour dégagée.",
+    photos: [
+      { src: haieEnvahissante.url, alt: "Végétation envahissante au-dessus d'une terrasse en bois" },
+      { src: escalierFeuilles.url, alt: "Escalier et terrasse couverts de feuilles avant nettoyage" },
+      { src: terrasseClim.url, alt: "Terrasse en bois dégagée le long du mur" },
+      { src: courPropre.url, alt: "Cour et terrasse nettoyées après intervention" },
+    ],
+  },
+  {
     nom: "Abri et toiture — dépose et remise à neuf",
     description: "Ancienne couverture envahie de végétation déposée, zone dégagée puis nouvelle toiture posée.",
     photos: [
       { src: toitureAvant.url, alt: "Toiture d'abri avant intervention" },
+      { src: toitureGouttiere.url, alt: "Gouttière et couverture encombrées de terre et de racines" },
       { src: toitureDepose.url, alt: "Ancienne couverture envahie de racines en cours de dépose" },
       { src: toitureBache.url, alt: "Toiture recouverte d'une membrane noire pendant le chantier" },
       { src: toitureFinie.url, alt: "Toiture d'abri remise au propre après intervention" },
