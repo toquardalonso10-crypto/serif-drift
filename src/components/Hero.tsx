@@ -26,12 +26,12 @@ export function Hero() {
             <a className="transition-opacity hover:opacity-60" href="#chantiers">
               Avant / Après
             </a>
-            <a
+            <Link
               className="transition-opacity hover:opacity-60"
-              href="#realisations"
+              to="/realisations"
             >
               Réalisations
-            </a>
+            </Link>
             <a
               className="transition-opacity hover:opacity-60"
               href="#abonnements"
