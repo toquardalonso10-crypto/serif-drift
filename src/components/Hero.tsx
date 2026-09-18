@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Phone, Leaf, Star } from "lucide-react";
 import { SerifGlow } from "./SerifGlow";
 import { BandeauPaiement } from "./BandeauPaiement";
-import { JardinIA } from "./JardinIA";
+import heroElagueur from "@/assets/hero-elagueur.jpg";
 
 export function Hero() {
   return (
@@ -157,7 +157,19 @@ export function Hero() {
           transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative"
         >
-          <JardinIA />
+          <div className="rotate-[1.5deg] overflow-hidden rounded-sm border-8 border-card bg-card shadow-lift">
+            <img
+              src={heroElagueur}
+              alt="Élagueur-grimpeur Toquard & Fils en intervention dans un chêne"
+              className="h-[52vh] w-full object-cover md:h-[62vh]"
+            />
+            <div className="flex items-center justify-between px-3 py-2 text-[11px] uppercase tracking-[0.2em] text-ink/70">
+              <span>Élagage &amp; soin des arbres</span>
+              <span className="font-serif text-base">(01)</span>
+            </div>
+          </div>
+
+
 
 
           <motion.div

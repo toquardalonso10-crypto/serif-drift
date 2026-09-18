@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
-import { Route as ApiJardinRouteImport } from './routes/api/jardin'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 
 const IndexRoute = IndexRouteImport.update({
@@ -24,11 +23,6 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
   path: '/services/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiJardinRoute = ApiJardinRouteImport.update({
-  id: '/api/jardin',
-  path: '/api/jardin',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ApiChatRoute = ApiChatRouteImport.update({
   id: '/api/chat',
   path: '/api/chat',
@@ -38,34 +32,30 @@ const ApiChatRoute = ApiChatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/chat': typeof ApiChatRoute
-  '/api/jardin': typeof ApiJardinRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/chat': typeof ApiChatRoute
-  '/api/jardin': typeof ApiJardinRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/chat': typeof ApiChatRoute
-  '/api/jardin': typeof ApiJardinRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/chat' | '/api/jardin' | '/services/$slug'
+  fullPaths: '/' | '/api/chat' | '/services/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/chat' | '/api/jardin' | '/services/$slug'
-  id: '__root__' | '/' | '/api/chat' | '/api/jardin' | '/services/$slug'
+  to: '/' | '/api/chat' | '/services/$slug'
+  id: '__root__' | '/' | '/api/chat' | '/services/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiChatRoute: typeof ApiChatRoute
-  ApiJardinRoute: typeof ApiJardinRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
 }
 
@@ -85,13 +75,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/jardin': {
-      id: '/api/jardin'
-      path: '/api/jardin'
-      fullPath: '/api/jardin'
-      preLoaderRoute: typeof ApiJardinRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/api/chat': {
       id: '/api/chat'
       path: '/api/chat'
@@ -105,7 +88,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiChatRoute: ApiChatRoute,
-  ApiJardinRoute: ApiJardinRoute,
   ServicesSlugRoute: ServicesSlugRoute,
 }
 export const routeTree = rootRouteImport
