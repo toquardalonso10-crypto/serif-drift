@@ -25,6 +25,10 @@ import parkingTas from "@/assets/chantiers/7637574324330397165.JPG.asset.json";
 import camionChantier from "@/assets/chantiers/7858830637183545872.JPG.asset.json";
 import haieEnvahissante from "@/assets/chantiers/8013373355619148722.JPG.asset.json";
 import toitureGouttiere from "@/assets/chantiers/8105468604482816334.JPG.asset.json";
+import terrasseEscalier from "@/assets/chantiers/8181964303219953796.JPG.asset.json";
+import parkingCamion from "@/assets/chantiers/8335856582033932758.JPG.asset.json";
+import parkingBordure from "@/assets/chantiers/8839002591003358246.JPG.asset.json";
+import terrasseFinie from "@/assets/chantiers/9175435763877632901.JPG.asset.json";
 
 const CHANTIERS = [
   {
@@ -41,8 +45,10 @@ const CHANTIERS = [
     photos: [
       { src: parkingZone.url, alt: "Abords de parking de zone commerciale envahis d'aiguilles de pin" },
       { src: parkingAiguilles.url, alt: "Bordure de parking couverte d'aiguilles de pin avant nettoyage" },
+      { src: parkingBordure.url, alt: "Bordure de parking encombrée d'aiguilles de pin et de terre" },
       { src: parkingTas.url, alt: "Tas d'aiguilles de pin ramassées le long de la bordure" },
       { src: brouetteDechets.url, alt: "Brouette remplie de déchets verts ramassés sur le parking" },
+      { src: parkingCamion.url, alt: "Déchets verts regroupés avant chargement dans la camionnette" },
       { src: camionChantier.url, alt: "Camionnette ETS Toquard & Fils sur le chantier de nettoyage" },
       { src: parkingPropre.url, alt: "Bordure de parking dégagée après le passage de l'équipe" },
     ],
@@ -63,8 +69,10 @@ const CHANTIERS = [
     photos: [
       { src: haieEnvahissante.url, alt: "Végétation envahissante au-dessus d'une terrasse en bois" },
       { src: escalierFeuilles.url, alt: "Escalier et terrasse couverts de feuilles avant nettoyage" },
+      { src: terrasseEscalier.url, alt: "Escalier de terrasse en bois dégagé pendant le chantier" },
       { src: terrasseClim.url, alt: "Terrasse en bois dégagée le long du mur" },
       { src: courPropre.url, alt: "Cour et terrasse nettoyées après intervention" },
+      { src: terrasseFinie.url, alt: "Terrasse et jardin remis au propre après intervention" },
     ],
   },
   {
