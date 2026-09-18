@@ -36,17 +36,10 @@ type Chantier = { nom: string; description: string; photos: Photo[] };
 
 const CHANTIERS: Chantier[] = [
   {
-    nom: "Entretien professionnel — Noz",
-    description: "Espaces extérieurs, bordures et abords de parking remis au propre.",
+    nom: "Zone commerciale — nettoyage des abords et espaces verts",
+    description: "Aiguilles de pin et déchets verts ramassés, bordures et espaces verts remis au propre.",
     photos: [
-      { src: siteNozLarge.url, alt: "Parking et espaces verts avant entretien chez Noz" },
-      { src: siteNozPropre.url, alt: "Espaces verts entretenus devant le magasin Noz" },
-    ],
-  },
-  {
-    nom: "Parking de zone commerciale — nettoyage des abords",
-    description: "Aiguilles de pin et déchets verts ramassés le long des bordures, places rendues nettes.",
-    photos: [
+      { src: siteNozLarge.url, alt: "Parking et espaces verts avant entretien" },
       { src: parkingZone.url, alt: "Abords de parking de zone commerciale envahis d'aiguilles de pin" },
       { src: parkingAiguilles.url, alt: "Bordure de parking couverte d'aiguilles de pin avant nettoyage" },
       { src: parkingBordure.url, alt: "Bordure de parking encombrée d'aiguilles de pin et de terre" },
@@ -55,26 +48,21 @@ const CHANTIERS: Chantier[] = [
       { src: parkingCamion.url, alt: "Déchets verts regroupés avant chargement dans la camionnette" },
       { src: camionChantier.url, alt: "Camionnette ETS Toquard & Fils sur le chantier de nettoyage" },
       { src: parkingPropre.url, alt: "Bordure de parking dégagée après le passage de l'équipe" },
+      { src: siteNozPropre.url, alt: "Espaces verts entretenus après intervention" },
     ],
   },
   {
-    nom: "Jardin de ville — nettoyage complet",
-    description: "Passage, massifs, palmiers et coin terrasse dégagés avec soin.",
+    nom: "Jardin, terrasse et cour — débroussaillage et remise au propre",
+    description: "Végétation envahissante coupée, massifs, allées, terrasse bois et cour nettoyés avec soin.",
     photos: [
       { src: terrasseJardin.url, alt: "Allée de jardin et terrasse avant remise en état" },
       { src: jardinPalmiers.url, alt: "Massif de palmiers et végétation à nettoyer" },
       { src: jardinMassif.url, alt: "Massif dense dans un jardin de ville" },
-      { src: jardinCoin.url, alt: "Coin de jardin nettoyé près d'une clôture" },
-    ],
-  },
-  {
-    nom: "Terrasse et cour — débroussaillage et remise au propre",
-    description: "Végétation envahissante coupée, feuilles et terrasse bois nettoyées jusqu'à la cour dégagée.",
-    photos: [
       { src: haieEnvahissante.url, alt: "Végétation envahissante au-dessus d'une terrasse en bois" },
       { src: escalierFeuilles.url, alt: "Escalier et terrasse couverts de feuilles avant nettoyage" },
       { src: terrasseEscalier.url, alt: "Escalier de terrasse en bois dégagé pendant le chantier" },
       { src: terrasseClim.url, alt: "Terrasse en bois dégagée le long du mur" },
+      { src: jardinCoin.url, alt: "Coin de jardin nettoyé près d'une clôture" },
       { src: courPropre.url, alt: "Cour et terrasse nettoyées après intervention" },
       { src: terrasseFinie.url, alt: "Terrasse et jardin remis au propre après intervention" },
     ],
