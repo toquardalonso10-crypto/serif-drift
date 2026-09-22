@@ -36,10 +36,8 @@ export function Marquee<T>({
     <div
       className="group relative overflow-hidden"
       style={{
-        maskImage:
-          "linear-gradient(90deg, transparent, black 6%, black 94%, transparent)",
-        WebkitMaskImage:
-          "linear-gradient(90deg, transparent, black 6%, black 94%, transparent)",
+        maskImage: "linear-gradient(90deg, transparent, black 6%, black 94%, transparent)",
+        WebkitMaskImage: "linear-gradient(90deg, transparent, black 6%, black 94%, transparent)",
       }}
     >
       <div

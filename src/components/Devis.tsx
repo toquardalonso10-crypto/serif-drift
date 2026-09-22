@@ -37,9 +37,8 @@ export function Devis() {
             />
           </h2>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream/65">
-            Laissez vos coordonnées et décrivez le chantier. Nous passons
-            mesurer sur place, puis vous recevez le devis définitif par mail
-            sous 48 h.
+            Laissez vos coordonnées et décrivez le chantier. Nous passons mesurer sur place, puis
+            vous recevez le devis définitif par mail sous 48 h.
           </p>
           <ul className="mt-8 space-y-3 text-sm text-cream/80">
             {[
@@ -65,22 +64,38 @@ export function Devis() {
         >
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink">
+              <label
+                htmlFor="devis-prenom"
+                className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink"
+              >
                 Prénom
               </label>
-              <input name="prenom" required className={champ} placeholder="Marie" />
+              <input
+                id="devis-prenom"
+                name="prenom"
+                required
+                className={champ}
+                placeholder="Marie"
+              />
             </div>
             <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink">
+              <label
+                htmlFor="devis-nom"
+                className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink"
+              >
                 Nom
               </label>
-              <input name="nom" required className={champ} placeholder="Dupont" />
+              <input id="devis-nom" name="nom" required className={champ} placeholder="Dupont" />
             </div>
             <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink">
+              <label
+                htmlFor="devis-tel"
+                className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink"
+              >
                 Téléphone
               </label>
               <input
+                id="devis-tel"
                 name="tel"
                 type="tel"
                 required
@@ -89,10 +104,14 @@ export function Devis() {
               />
             </div>
             <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink">
+              <label
+                htmlFor="devis-email"
+                className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink"
+              >
                 E-mail
               </label>
               <input
+                id="devis-email"
                 name="email"
                 type="email"
                 required
@@ -101,16 +120,28 @@ export function Devis() {
               />
             </div>
             <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink">
+              <label
+                htmlFor="devis-ville"
+                className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink"
+              >
                 Commune
               </label>
-              <input name="ville" required className={champ} placeholder="Saintes" />
+              <input
+                id="devis-ville"
+                name="ville"
+                required
+                className={champ}
+                placeholder="Saintes"
+              />
             </div>
             <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink">
+              <label
+                htmlFor="devis-chantier"
+                className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink"
+              >
                 Type de chantier
               </label>
-              <select name="chantier" className={champ} defaultValue="Élagage">
+              <select id="devis-chantier" name="chantier" className={champ} defaultValue="Élagage">
                 {[
                   "Élagage / taille douce",
                   "Abattage",
@@ -126,10 +157,14 @@ export function Devis() {
           </div>
 
           <div className="mt-4">
-            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink">
+            <label
+              htmlFor="devis-message"
+              className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink"
+            >
               Décrivez vos arbres
             </label>
             <textarea
+              id="devis-message"
               name="message"
               rows={3}
               className={champ}
@@ -139,8 +174,8 @@ export function Devis() {
 
           <label className="mt-5 flex items-start gap-2 text-xs leading-relaxed text-ink">
             <input type="checkbox" required className="mt-0.5 accent-[var(--forest)]" />
-            J'accepte que Ets Toquard &amp; Fils utilise ces informations pour me
-            recontacter au sujet de mon devis.
+            J'accepte que Ets Toquard &amp; Fils utilise ces informations pour me recontacter au
+            sujet de mon devis.
           </label>
 
           <button

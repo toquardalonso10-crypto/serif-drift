@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import heroElagueur from "@/assets/hero-elagueur.jpg";
+import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { Hero } from "@/components/Hero";
 import { Meteo } from "@/components/Meteo";
 import { Partenaires } from "@/components/Partenaires";
@@ -13,7 +15,6 @@ import { Footer } from "@/components/Footer";
 import { BulleDevis } from "@/components/BulleDevis";
 import { ChatArbre } from "@/components/ChatArbre";
 
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Élagage, abattage et démontage par cordes en Charente-Maritime. Devis gratuit, météo des chantiers en direct, avis clients 4,9/5.",
+          "Élagage, abattage et démontage par cordes en Charente-Maritime. Devis gratuit, météo des chantiers en direct.",
       },
       {
         property: "og:title",
@@ -31,12 +32,20 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:description",
-        content:
-          "Trois générations de grimpeurs-élagueurs de La Rochelle à Jonzac. Taille douce, abattage, urgence tempête. Devis gratuit.",
+        content: "De La Rochelle à Jonzac, taille douce, abattage, urgence tempête. Devis gratuit.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: absoluteUrl(heroElagueur) },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Ets Toquard & Fils — Élagueurs en Charente-Maritime" },
+      {
+        name: "twitter:description",
+        content: "De La Rochelle à Jonzac, taille douce, abattage, urgence tempête. Devis gratuit.",
+      },
+      { name: "twitter:image", content: absoluteUrl(heroElagueur) },
     ],
+    links: [{ rel: "canonical", href: SITE_URL }],
   }),
   component: Index,
 });
@@ -57,7 +66,6 @@ function Index() {
       <Footer />
       <BulleDevis />
       <ChatArbre />
-
     </main>
   );
 }

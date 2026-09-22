@@ -46,16 +46,14 @@ export function AvantApres() {
     <section id="chantiers" className="bg-cream py-24 paper-grain">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <div className="mb-12 text-center">
-          <p className="text-luxe-eyebrow text-terracotta">
-            Chantier n°427 · Pons (17)
-          </p>
+          <p className="text-luxe-eyebrow text-terracotta">Chantier n°427 · Pons (17)</p>
           <div className="mx-auto my-5 h-px w-24 bg-gold-foil" />
           <h2 className="text-4xl font-medium text-bark md:text-5xl">
             Une haie <span className="font-serif italic text-forest">reprise au millimètre</span>
           </h2>
           <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-ink">
-            Glissez la flèche : 42 mètres de haie de laurier remis au cordeau en
-            une journée. Coupe nette, arêtes droites, déchets verts évacués.
+            Glissez la flèche : 42 mètres de haie de laurier remis au cordeau en une journée. Coupe
+            nette, arêtes droites, déchets verts évacués.
           </p>
         </div>
 
@@ -95,7 +93,6 @@ export function AvantApres() {
             style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
           />
 
-
           <span className="text-luxe-eyebrow pointer-events-none absolute left-5 top-5 rounded-full bg-bark/70 px-4 py-1.5 text-cream backdrop-blur">
             Avant
           </span>
@@ -115,6 +112,5 @@ export function AvantApres() {
         </motion.div>
       </div>
     </section>
-
   );
 }

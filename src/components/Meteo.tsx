@@ -1,16 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  Cloud,
-  CloudDrizzle,
-  CloudRain,
-  CloudSnow,
-  Sun,
-  CloudSun,
-  Wind,
-  Zap,
-} from "lucide-react";
+import { Cloud, CloudDrizzle, CloudRain, CloudSnow, Sun, CloudSun, Wind, Zap } from "lucide-react";
 import { Marquee } from "./Marquee";
-
 
 const VILLES = [
   { nom: "La Rochelle", lat: 46.16, lon: -1.15 },
@@ -78,20 +68,18 @@ export function Meteo() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
               En direct
             </p>
-            <h2 className="mt-2 text-4xl font-medium md:text-5xl">
-              La météo sur nos chantiers
-            </h2>
+            <h2 className="mt-2 text-4xl font-medium md:text-5xl">La météo sur nos chantiers</h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-cream/60">
-            On ne grimpe jamais par vent fort. Voici les conditions relevées
-            maintenant sur les six secteurs où nous intervenons.
+            On ne grimpe jamais par vent fort. Voici les conditions relevées maintenant sur les six
+            secteurs où nous intervenons.
           </p>
         </div>
 
         {isError && (
           <p className="mt-10 text-sm text-ochre">
-            Impossible de récupérer la météo pour le moment — rappelez-nous, on
-            vous dira le temps qu'il fait par la fenêtre.
+            Impossible de récupérer la météo pour le moment — rappelez-nous, on vous dira le temps
+            qu'il fait par la fenêtre.
           </p>
         )}
 
@@ -99,10 +87,7 @@ export function Meteo() {
           {(isLoading || !data) && !isError ? (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {VILLES.map((v) => (
-                <div
-                  key={v.nom}
-                  className="h-[132px] animate-pulse rounded-xl bg-cream/10"
-                />
+                <div key={v.nom} className="h-[132px] animate-pulse rounded-xl bg-cream/10" />
               ))}
             </div>
           ) : (
@@ -119,9 +104,7 @@ export function Meteo() {
                       <div className="flex items-start justify-between">
                         <div>
                           <h3 className="text-lg font-semibold">{v.nom}</h3>
-                          <p className="text-xs text-cream/55">
-                            {libelle(v.current.weather_code)}
-                          </p>
+                          <p className="text-xs text-cream/55">{libelle(v.current.weather_code)}</p>
                         </div>
                         <Icon className="h-8 w-8 text-ochre" />
                       </div>
@@ -131,9 +114,7 @@ export function Meteo() {
                         </span>
                         <span
                           className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs ${
-                            ventFort
-                              ? "bg-terracotta/25 text-ochre"
-                              : "bg-cream/10 text-cream/70"
+                            ventFort ? "bg-terracotta/25 text-ochre" : "bg-cream/10 text-cream/70"
                           }`}
                         >
                           <Wind className="h-3.5 w-3.5" />
@@ -147,7 +128,6 @@ export function Meteo() {
             )
           )}
         </div>
-
       </div>
     </section>
   );

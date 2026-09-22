@@ -27,16 +27,10 @@ export function Hero() {
             <a className="transition-opacity hover:opacity-60" href="#chantiers">
               Avant / Après
             </a>
-            <Link
-              className="transition-opacity hover:opacity-60"
-              to="/realisations"
-            >
+            <Link className="transition-opacity hover:opacity-60" to="/realisations">
               Réalisations
             </Link>
-            <a
-              className="transition-opacity hover:opacity-60"
-              href="#abonnements"
-            >
+            <a className="transition-opacity hover:opacity-60" href="#abonnements">
               Abonnements
             </a>
             <a className="transition-opacity hover:opacity-60" href="#avis">
@@ -61,7 +55,6 @@ export function Hero() {
             Artisans élagueurs — Charente-Maritime
           </motion.p>
 
-
           <motion.h1
             className="text-bark"
             initial="hidden"
@@ -85,13 +78,7 @@ export function Hero() {
               on coupe net,
             </motion.span>
             <span className="mt-1 flex flex-wrap items-baseline gap-3">
-              <SerifGlow
-                word="proprement"
-                fontSize={64}
-                strokeWidth={14}
-                italic
-                delay={0.5}
-              />
+              <SerifGlow word="proprement" fontSize={64} strokeWidth={14} italic delay={0.5} />
               <motion.span
                 className="text-[13vw] font-medium leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-[84px]"
                 initial={{ opacity: 0, filter: "blur(12px)" }}
@@ -109,11 +96,9 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.9 }}
             className="mt-6 max-w-md text-[15px] leading-relaxed text-ink"
           >
-            Élagage, abattage délicat, taille douce et démontage par cordes. De
-            La Rochelle à Jonzac, on grimpe dans vos arbres depuis 16 ans —
-            assurés, équipés, et on ramasse tout avant de partir. Paiement en 3,
-            5 ou 10 fois sans frais.
-
+            Élagage, abattage délicat, taille douce et démontage par cordes. De La Rochelle à
+            Jonzac, on grimpe dans vos arbres depuis 16 ans — assurés, équipés, et on ramasse tout
+            avant de partir. Paiement en 3, 5 ou 10 fois sans frais.
           </motion.p>
 
           <motion.div
@@ -146,13 +131,10 @@ export function Hero() {
               ["16 ans", "de métier"],
               ["350+", "arbres taillés"],
               ["4,9/5", "sur Google"],
-
             ].map(([k, v]) => (
               <div key={k}>
                 <dt className="text-2xl font-extrabold text-forest">{k}</dt>
-                <dd className="text-xs uppercase tracking-wider text-ink/70">
-                  {v}
-                </dd>
+                <dd className="text-xs uppercase tracking-wider text-ink/70">{v}</dd>
               </div>
             ))}
           </motion.dl>
@@ -168,6 +150,9 @@ export function Hero() {
             <img
               src={heroElagueur}
               alt="Élagueur-grimpeur Toquard & Fils en intervention dans un chêne"
+              width={1408}
+              height={1200}
+              fetchPriority="high"
               className="h-[52vh] w-full object-cover md:h-[62vh]"
             />
             <div className="flex items-center justify-between px-3 py-2 text-[11px] uppercase tracking-[0.2em] text-ink/70">
@@ -176,21 +161,14 @@ export function Hero() {
             </div>
           </div>
 
-
-
-
           <motion.div
             initial={{ opacity: 0, scale: 0.5, rotate: -18 }}
             animate={{ opacity: 1, scale: 1, rotate: -8 }}
             transition={{ duration: 0.5, delay: 1.3, ease: [0.34, 1.56, 0.64, 1] }}
             className="absolute -bottom-6 -left-4 rounded-full bg-forest px-5 py-4 text-center text-primary-foreground shadow-lift md:-left-10"
           >
-            <span className="block text-xl font-extrabold leading-none">
-              -50%
-            </span>
-            <span className="text-[10px] uppercase tracking-widest">
-              crédit d'impôt
-            </span>
+            <span className="block text-xl font-extrabold leading-none">-50%</span>
+            <span className="text-[10px] uppercase tracking-widest">crédit d'impôt</span>
           </motion.div>
 
           <motion.div

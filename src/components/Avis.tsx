@@ -2,8 +2,6 @@ import { Star } from "lucide-react";
 import { SerifGlow } from "./SerifGlow";
 import { Marquee } from "./Marquee";
 
-
-
 const AVIS = [
   {
     nom: "Martine Ledoux",
@@ -97,16 +95,13 @@ const AVIS = [
   },
 ];
 
-
 function Etoiles({ note }: { note: number }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          className={`h-4 w-4 ${
-            i < note ? "fill-ochre text-ochre" : "text-bark/25"
-          }`}
+          className={`h-4 w-4 ${i < note ? "fill-ochre text-ochre" : "text-bark/25"}`}
         />
       ))}
     </div>
@@ -133,9 +128,7 @@ export function Avis() {
             <span className="text-2xl font-extrabold text-bark">4,9</span>
             <div>
               <Etoiles note={5} />
-              <span className="text-[11px] text-ink/70">
-                187 avis Google vérifiés
-              </span>
+              <span className="text-[11px] text-ink/70">187 avis Google vérifiés</span>
             </div>
           </div>
         </div>
@@ -165,15 +158,12 @@ export function Avis() {
                   <div className="mt-4">
                     <Etoiles note={a.note} />
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-ink">
-                    {a.texte}
-                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-ink">{a.texte}</p>
                 </article>
               )}
             />
           ))}
         </div>
-
       </div>
     </section>
   );

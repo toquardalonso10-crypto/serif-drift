@@ -123,9 +123,7 @@ export function ChatArbre() {
               <Arbre parle />
               <div className="flex-1">
                 <p className="text-sm font-bold">Petit Chêne</p>
-                <p className="text-[11px] opacity-80">
-                  Vos questions sur l'entreprise
-                </p>
+                <p className="text-[11px] opacity-80">Vos questions sur l'entreprise</p>
               </div>
               <button
                 type="button"
@@ -139,10 +137,7 @@ export function ChatArbre() {
 
             <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
               {messages.map((m, i) => (
-                <div
-                  key={i}
-                  className={m.role === "user" ? "flex justify-end" : ""}
-                >
+                <div key={i} className={m.role === "user" ? "flex justify-end" : ""}>
                   <p
                     className={`max-w-[85%] whitespace-pre-wrap text-sm leading-relaxed ${
                       m.role === "user"
@@ -156,8 +151,7 @@ export function ChatArbre() {
               ))}
               {chargement && (
                 <p className="flex items-center gap-2 text-sm text-ink/60">
-                  <Loader2 className="h-3.5 w-3.5 animate-spin" /> Petit Chêne
-                  réfléchit…
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" /> Petit Chêne réfléchit…
                 </p>
               )}
               <div ref={fin} />
@@ -172,6 +166,7 @@ export function ChatArbre() {
                 value={saisie}
                 onChange={(e) => setSaisie(e.target.value)}
                 placeholder="Votre question…"
+                aria-label="Votre question pour Petit Chêne"
                 className="flex-1 rounded-full border border-bark/20 bg-cream px-3.5 py-2 text-sm text-bark outline-none placeholder:text-ink/45 focus:border-forest"
               />
               <button

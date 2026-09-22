@@ -37,9 +37,7 @@ export function BulleDevis() {
               <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/70">
                 Sans engagement
               </span>
-              <span className="text-sm font-semibold tracking-tight">
-                Devis gratuit
-              </span>
+              <span className="text-sm font-semibold tracking-tight">Devis gratuit</span>
             </span>
           </motion.a>
           <button

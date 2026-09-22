@@ -42,11 +42,7 @@ export const Route = createFileRoute("/api/chat")({
           return Response.json({ text });
         } catch (error) {
           const message = error instanceof Error ? error.message : "Erreur";
-          const status = message.includes("429")
-            ? 429
-            : message.includes("402")
-              ? 402
-              : 500;
+          const status = message.includes("429") ? 429 : message.includes("402") ? 402 : 500;
           return Response.json({ error: message }, { status });
         }
       },

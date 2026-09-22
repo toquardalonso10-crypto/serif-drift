@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { absoluteUrl, buildBreadcrumbJsonLd } from "@/lib/seo";
 
 import jardinCoin from "@/assets/chantiers/1162378581599593768_2.JPG.asset.json";
 import siteNozLarge from "@/assets/chantiers/1381251436636874893.JPG.asset.json";
@@ -52,50 +53,86 @@ type Chantier = { nom: string; description: string; photos: Photo[] };
 const CHANTIERS: Chantier[] = [
   {
     nom: "Zone commerciale — nettoyage des abords et espaces verts",
-    description: "Aiguilles de pin et déchets verts ramassés, bordures et espaces verts remis au propre.",
+    description:
+      "Aiguilles de pin et déchets verts ramassés, bordures et espaces verts remis au propre.",
     photos: [
       { src: siteNozLarge.url, alt: "Parking et espaces verts avant entretien" },
-      { src: parkingZone.url, alt: "Abords de parking de zone commerciale envahis d'aiguilles de pin" },
-      { src: parkingAiguilles.url, alt: "Bordure de parking couverte d'aiguilles de pin avant nettoyage" },
-      { src: parkingBordure.url, alt: "Bordure de parking encombrée d'aiguilles de pin et de terre" },
+      {
+        src: parkingZone.url,
+        alt: "Abords de parking de zone commerciale envahis d'aiguilles de pin",
+      },
+      {
+        src: parkingAiguilles.url,
+        alt: "Bordure de parking couverte d'aiguilles de pin avant nettoyage",
+      },
+      {
+        src: parkingBordure.url,
+        alt: "Bordure de parking encombrée d'aiguilles de pin et de terre",
+      },
       { src: parkingTas.url, alt: "Tas d'aiguilles de pin ramassées le long de la bordure" },
-      { src: brouetteDechets.url, alt: "Brouette remplie de déchets verts ramassés sur le parking" },
-      { src: parkingCamion.url, alt: "Déchets verts regroupés avant chargement dans la camionnette" },
-      { src: camionChantier.url, alt: "Camionnette ETS Toquard & Fils sur le chantier de nettoyage" },
+      {
+        src: brouetteDechets.url,
+        alt: "Brouette remplie de déchets verts ramassés sur le parking",
+      },
+      {
+        src: parkingCamion.url,
+        alt: "Déchets verts regroupés avant chargement dans la camionnette",
+      },
+      {
+        src: camionChantier.url,
+        alt: "Camionnette ETS Toquard & Fils sur le chantier de nettoyage",
+      },
       { src: parkingPropre.url, alt: "Bordure de parking dégagée après le passage de l'équipe" },
       { src: siteNozPropre.url, alt: "Espaces verts entretenus après intervention" },
     ],
   },
   {
     nom: "Jardin, terrasse et cour — débroussaillage et remise au propre",
-    description: "Végétation envahissante coupée, massifs, allées, terrasse bois et cour nettoyés avec soin.",
+    description:
+      "Végétation envahissante coupée, massifs, allées, terrasse bois et cour nettoyés avec soin.",
     photos: [
       { src: terrasseJardin.url, alt: "Allée de jardin et terrasse avant remise en état" },
       { src: jardinPalmiers.url, alt: "Massif de palmiers et végétation à nettoyer" },
       { src: jardinMassif.url, alt: "Massif dense dans un jardin de ville" },
-      { src: haieEnvahissante.url, alt: "Végétation envahissante au-dessus d'une terrasse en bois" },
-      { src: escalierFeuilles.url, alt: "Escalier et terrasse couverts de feuilles avant nettoyage" },
+      {
+        src: haieEnvahissante.url,
+        alt: "Végétation envahissante au-dessus d'une terrasse en bois",
+      },
+      {
+        src: escalierFeuilles.url,
+        alt: "Escalier et terrasse couverts de feuilles avant nettoyage",
+      },
       { src: terrasseEscalier.url, alt: "Escalier de terrasse en bois dégagé pendant le chantier" },
       { src: terrasseClim.url, alt: "Terrasse en bois dégagée le long du mur" },
       { src: jardinCoin.url, alt: "Coin de jardin nettoyé près d'une clôture" },
       { src: courPropre.url, alt: "Cour et terrasse nettoyées après intervention" },
       { src: terrasseFinie.url, alt: "Terrasse et jardin remis au propre après intervention" },
       { src: apresArbre.url, alt: "Arbre dégagé avec galets blancs après la taille" },
-      { src: apresTerrasseBanc.url, alt: "Terrasse en bois et banc remis à neuf après le chantier" },
+      {
+        src: apresTerrasseBanc.url,
+        alt: "Terrasse en bois et banc remis à neuf après le chantier",
+      },
       { src: apresAllee.url, alt: "Allée en bois dégagée et arbres taillés après intervention" },
       { src: apresCoinCanape.url, alt: "Coin salon de jardin dégagé le long du mur en pierre" },
       { src: apresBuddha.url, alt: "Coin zen avec galets blancs après remise en état" },
       { src: apresEscalier.url, alt: "Escalier en bois et terrasse nettoyés après le chantier" },
       { src: apresLanterne.url, alt: "Palissade et massif de galets remis au propre" },
-      { src: apresVueMaison.url, alt: "Vue d'ensemble du jardin et de la terrasse après intervention" },
+      {
+        src: apresVueMaison.url,
+        alt: "Vue d'ensemble du jardin et de la terrasse après intervention",
+      },
     ],
   },
   {
     nom: "Abri et toiture — dépose et remise à neuf",
-    description: "Ancienne couverture envahie de végétation déposée, zone dégagée puis nouvelle toiture posée.",
+    description:
+      "Ancienne couverture envahie de végétation déposée, zone dégagée puis nouvelle toiture posée.",
     photos: [
       { src: toitureAvant.url, alt: "Toiture d'abri avant intervention" },
-      { src: toitureGouttiere.url, alt: "Gouttière et couverture encombrées de terre et de racines" },
+      {
+        src: toitureGouttiere.url,
+        alt: "Gouttière et couverture encombrées de terre et de racines",
+      },
       { src: toitureDepose.url, alt: "Ancienne couverture envahie de racines en cours de dépose" },
       { src: toitureBache.url, alt: "Toiture recouverte d'une membrane noire pendant le chantier" },
       { src: toitureFinie.url, alt: "Toiture d'abri remise au propre après intervention" },
@@ -104,7 +141,8 @@ const CHANTIERS: Chantier[] = [
   },
   {
     nom: "Pelouse complète — préparation et pose de gazon",
-    description: "Terrain nu nettoyé et nivelé, puis gazon posé pour une pelouse nette et régulière.",
+    description:
+      "Terrain nu nettoyé et nivelé, puis gazon posé pour une pelouse nette et régulière.",
     photos: [
       { src: gazonAvantBord.url, alt: "Bord de terrain à nettoyer avant la pose du gazon" },
       { src: gazonAvantTerrain.url, alt: "Terrain en cours de préparation avant engazonnement" },
@@ -116,7 +154,6 @@ const CHANTIERS: Chantier[] = [
     ],
   },
 ];
-
 
 export const Route = createFileRoute("/realisations")({
   head: () => ({
@@ -139,8 +176,24 @@ export const Route = createFileRoute("/realisations")({
           "Tailles de haies, élagages, abattages et jardins remis en état : tous nos chantiers en images.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: absoluteUrl("/realisations") },
+      { property: "og:image", content: absoluteUrl(apresVueMaison.url) },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Galerie photo — Ets Toquard & Fils" },
+      {
+        name: "twitter:description",
+        content:
+          "Tailles de haies, élagages, abattages et jardins remis en état : tous nos chantiers en images.",
+      },
+      { name: "twitter:image", content: absoluteUrl(apresVueMaison.url) },
+      {
+        "script:ld+json": buildBreadcrumbJsonLd([
+          { name: "Accueil", path: "/" },
+          { name: "Réalisations", path: "/realisations" },
+        ]),
+      },
     ],
+    links: [{ rel: "canonical", href: absoluteUrl("/realisations") }],
   }),
   component: GaleriePage,
 });
@@ -199,9 +252,7 @@ function CarrouselChantier({ chantier }: { chantier: Chantier }) {
           </span>
         </div>
 
-        <p className="border-t border-cream/10 px-5 py-4 text-sm text-cream/70">
-          {photo.alt}
-        </p>
+        <p className="border-t border-cream/10 px-5 py-4 text-sm text-cream/70">{photo.alt}</p>
       </div>
 
       <div className="mt-3 flex gap-2 overflow-x-auto pb-2">
@@ -248,13 +299,11 @@ function GaleriePage() {
         <div className="mt-8 grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-end">
           <div>
             <p className="text-luxe-eyebrow text-ochre">Carnet de chantiers</p>
-            <h1 className="mt-3 text-4xl font-medium text-cream md:text-5xl">
-              La galerie photo
-            </h1>
+            <h1 className="mt-3 text-4xl font-medium text-cream md:text-5xl">La galerie photo</h1>
           </div>
           <p className="max-w-xl text-sm leading-relaxed text-cream/70 md:justify-self-end">
-            Tailles, nettoyages, abattages et jardins remis en état : les
-            résultats du travail d'ETS Toquard &amp; Fils, sur le terrain.
+            Tailles, nettoyages, abattages et jardins remis en état : les résultats du travail d'ETS
+            Toquard &amp; Fils, sur le terrain.
           </p>
         </div>
 

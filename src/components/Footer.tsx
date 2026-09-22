@@ -12,16 +12,13 @@ export function Footer() {
             </span>
           </div>
           <p className="mt-3 max-w-xs text-sm opacity-80">
-            Élagage, abattage et entretien d'arbres en Charente-Maritime depuis
-            16 ans. Plus de 350 arbres taillés. Paiement en 3, 5 ou 10 fois sans
-            frais.
+            Élagage, abattage et entretien d'arbres en Charente-Maritime depuis 16 ans. Plus de 350
+            arbres taillés. Paiement en 3, 5 ou 10 fois sans frais.
           </p>
-
         </div>
         <ul className="space-y-2 text-sm opacity-90">
           <li className="flex gap-2">
-            <MapPin className="h-4 w-4 shrink-0" /> 107 avenue de Saintonge,
-            17430 Tonnay-Charente
+            <MapPin className="h-4 w-4 shrink-0" /> 107 avenue de Saintonge, 17430 Tonnay-Charente
           </li>
           <li className="flex gap-2">
             <Phone className="h-4 w-4 shrink-0" /> 07 78 26 00 88
@@ -33,14 +30,13 @@ export function Footer() {
         <div className="text-sm opacity-80">
           <p className="font-semibold">Secteurs d'intervention</p>
           <p className="mt-2">
-            La Rochelle · Saintes · Royan · Rochefort · Jonzac · Marennes ·
-            Saint-Jean-d'Angély · Île de Ré · Oléron
+            La Rochelle · Saintes · Royan · Rochefort · Jonzac · Marennes · Saint-Jean-d'Angély ·
+            Île de Ré · Oléron
           </p>
         </div>
       </div>
       <p className="mx-auto mt-10 max-w-7xl px-5 text-xs opacity-60 md:px-8">
-        © {new Date().getFullYear()} Ets Toquard &amp; Fils — SIRET 000 000 000
-        00000. Avis affichés à titre illustratif.
+        © {new Date().getFullYear()} Ets Toquard &amp; Fils. Avis affichés à titre illustratif.
       </p>
     </footer>
   );

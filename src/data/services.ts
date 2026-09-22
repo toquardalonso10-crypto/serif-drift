@@ -106,8 +106,7 @@ export const SERVICES: Service[] = [
     slug: "abattage-dessouchage",
     icon: Axe,
     titre: "Abattage & dessouchage",
-    texte:
-      "Abattage directionnel, rognage de souche jusqu'à 40 cm sous le niveau du sol.",
+    texte: "Abattage directionnel, rognage de souche jusqu'à 40 cm sous le niveau du sol.",
     couleur: "bg-terracotta text-accent-foreground",
     num: "03",
     intro:

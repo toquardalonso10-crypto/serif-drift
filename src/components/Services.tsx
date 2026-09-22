@@ -21,14 +21,12 @@ export function Services() {
             <h2 className="mt-3 text-4xl font-medium leading-[0.95] text-primary-foreground md:text-5xl">
               Six lattes de bois,
               <br />
-              <span className="font-serif italic text-lime">
-                six façons de grimper
-              </span>
+              <span className="font-serif italic text-lime">six façons de grimper</span>
             </h2>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-primary-foreground/70">
-            Ouvrez une latte, puis cliquez pour voir comment le chantier se
-            déroule, étape par étape.
+            Ouvrez une latte, puis cliquez pour voir comment le chantier se déroule, étape par
+            étape.
           </p>
         </div>
 
@@ -63,9 +61,7 @@ export function Services() {
                 >
                   {/* rail fermé */}
                   <div className="flex shrink-0 items-center gap-3 p-5 md:w-[74px] md:flex-col md:items-start md:justify-between">
-                    <span className="font-serif text-2xl leading-none opacity-60">
-                      {s.num}
-                    </span>
+                    <span className="font-serif text-2xl leading-none opacity-60">{s.num}</span>
                     <s.icon className="h-6 w-6 shrink-0" />
                     <span
                       className={`text-sm font-bold md:hidden ${ouvert ? "opacity-100" : "opacity-80"}`}

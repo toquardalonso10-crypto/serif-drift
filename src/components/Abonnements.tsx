@@ -51,9 +51,7 @@ export function Abonnements() {
     <section id="abonnements" className="bg-cream py-20 paper-grain">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="mb-12 max-w-2xl">
-          <p className="text-luxe-eyebrow text-terracotta">
-            Entretien à l'année
-          </p>
+          <p className="text-luxe-eyebrow text-terracotta">Entretien à l'année</p>
           <h2 className="mt-3 flex flex-wrap items-baseline gap-3 text-4xl font-medium text-bark md:text-5xl">
             Un abonnement,
             <SerifGlow
@@ -66,8 +64,8 @@ export function Abonnements() {
             />
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-ink">
-            Nos formules mensuelles d'entretien de jardin : sans engagement,
-            résiliables à tout moment, et éligibles au crédit d'impôt de 50 %.
+            Nos formules mensuelles d'entretien de jardin : sans engagement, résiliables à tout
+            moment, et éligibles au crédit d'impôt de 50 %.
           </p>
         </div>
 
@@ -92,9 +90,7 @@ export function Abonnements() {
                 </span>
               )}
               <h3 className="font-serif text-3xl">{f.nom}</h3>
-              <p
-                className={`mt-1 text-sm ${f.accent ? "text-cream/70" : "text-ink/75"}`}
-              >
+              <p className={`mt-1 text-sm ${f.accent ? "text-cream/70" : "text-ink/75"}`}>
                 {f.resume}
               </p>
               <p
@@ -104,8 +100,7 @@ export function Abonnements() {
                     : "border border-bark/12 bg-cream/70 text-ink"
                 }`}
               >
-                Tarif défini ensemble, sur place, après une visite gratuite de
-                votre jardin.
+                Tarif défini ensemble, sur place, après une visite gratuite de votre jardin.
               </p>
 
               <ul className="mt-6 space-y-2.5 text-sm">
@@ -114,18 +109,14 @@ export function Abonnements() {
                     <Check
                       className={`mt-0.5 h-4 w-4 shrink-0 ${f.accent ? "text-moss" : "text-forest"}`}
                     />
-                    <span className={f.accent ? "text-cream/85" : "text-ink"}>
-                      {item}
-                    </span>
+                    <span className={f.accent ? "text-cream/85" : "text-ink"}>{item}</span>
                   </li>
                 ))}
               </ul>
               <a
                 href="#devis"
                 className={`mt-8 rounded-full px-5 py-3 text-center text-sm font-semibold transition-transform hover:-translate-y-0.5 ${
-                  f.accent
-                    ? "bg-gold-foil text-bark"
-                    : "bg-forest text-primary-foreground"
+                  f.accent ? "bg-gold-foil text-bark" : "bg-forest text-primary-foreground"
                 }`}
               >
                 Choisir {f.nom}

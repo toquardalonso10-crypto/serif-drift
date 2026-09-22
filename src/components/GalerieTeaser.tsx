@@ -32,8 +32,8 @@ export function GalerieTeaser() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-cream/70">
-            Tailles de haies, élagages, abattages et jardins remis en état :
-            tous nos chantiers en images.
+            Tailles de haies, élagages, abattages et jardins remis en état : tous nos chantiers en
+            images.
           </p>
 
           <Link

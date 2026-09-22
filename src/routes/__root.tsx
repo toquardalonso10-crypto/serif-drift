@@ -11,7 +11,15 @@ import { useEffect, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner";
 
 import appCss from "../styles.css?url";
+import heroElagueur from "@/assets/hero-elagueur.jpg";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import {
+  SITE_NAME,
+  SITE_URL,
+  absoluteUrl,
+  buildLocalBusinessJsonLd,
+  buildWebsiteJsonLd,
+} from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -35,7 +43,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -73,6 +81,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const DEFAULT_OG_IMAGE = absoluteUrl(heroElagueur);
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -84,12 +94,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Élagueurs grimpeurs en Charente-Maritime : taille douce, abattage, urgence tempête. Devis gratuit.",
       },
-      { name: "author", content: "Ets Toquard & Fils" },
+      { name: "author", content: SITE_NAME },
+      { name: "theme-color", content: "oklch(0.42 0.089 148)" },
+      { property: "og:site_name", content: SITE_NAME },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "fr_FR" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: DEFAULT_OG_IMAGE },
+      { property: "og:image:width", content: "1408" },
+      { property: "og:image:height", content: "1200" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: DEFAULT_OG_IMAGE },
+      { "script:ld+json": buildLocalBusinessJsonLd(DEFAULT_OG_IMAGE) },
+      { "script:ld+json": buildWebsiteJsonLd() },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      // Le canonical est déclaré par chaque route (voir index.tsx,
+      // realisations.tsx, services.$slug.tsx) : le déclarer ici en plus
+      // créerait deux balises <link rel="canonical"> conflictuelles sur
+      // les pages qui définissent le leur (TanStack Router ne dédoublonne
+      // les <link> que par égalité stricte, pas par attribut "rel").
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
         rel: "preconnect",
@@ -111,7 +136,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>
