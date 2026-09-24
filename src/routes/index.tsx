@@ -3,6 +3,7 @@ import heroElagueur from "@/assets/hero-elagueur.jpg";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { Hero } from "@/components/Hero";
 import { Meteo } from "@/components/Meteo";
+import { Partenaires } from "@/components/Partenaires";
 import { Services } from "@/components/Services";
 import { AvantApres } from "@/components/AvantApres";
 import { GalerieTeaser } from "@/components/GalerieTeaser";
@@ -52,6 +53,7 @@ function Index() {
     <main id="top">
       <Hero />
       <Meteo />
+      <Partenaires />
       <Services />
       <AvantApres />
       <GalerieTeaser />

@@ -36,7 +36,7 @@ export function Footer() {
         </div>
       </div>
       <p className="mx-auto mt-10 max-w-7xl px-5 text-xs opacity-60 md:px-8">
-        © {new Date().getFullYear()} Ets Toquard &amp; Fils. Avis affichés à titre illustratif.
+        © {new Date().getFullYear()} Ets Toquard &amp; Fils — SIRET 494 677 644 00028.
       </p>
     </footer>
   );

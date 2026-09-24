@@ -18,6 +18,7 @@ export const BUSINESS = {
   telephone: "+33778260088",
   telephoneDisplay: "07 78 26 00 88",
   email: "toquarddavis10@gmail.com",
+  siret: "49467764400028",
   streetAddress: "107 avenue de Saintonge",
   postalCode: "17430",
   addressLocality: "Tonnay-Charente",
@@ -44,6 +45,7 @@ export function buildLocalBusinessJsonLd(imageUrl: string) {
     url: SITE_URL,
     telephone: BUSINESS.telephone,
     email: BUSINESS.email,
+    taxID: BUSINESS.siret,
     address: {
       "@type": "PostalAddress",
       streetAddress: BUSINESS.streetAddress,
