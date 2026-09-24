@@ -47,7 +47,7 @@ export const Route = createFileRoute("/api/devis")({
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              from: "Ets Toquard & Fils <onboarding@resend.dev>",
+              from: "Ets Toquard & Fils <devis@etstoquardetfils.com>",
               to: BUSINESS.email,
               reply_to: email,
               subject: `Devis — ${prenom} ${nom} (${ville})`,
