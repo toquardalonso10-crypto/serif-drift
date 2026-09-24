@@ -8,6 +8,7 @@ import { Services } from "@/components/Services";
 import { AvantApres } from "@/components/AvantApres";
 import { GalerieTeaser } from "@/components/GalerieTeaser";
 import { Abonnements } from "@/components/Abonnements";
+import { AvisGoogle } from "@/components/AvisGoogle";
 import { Devis } from "@/components/Devis";
 import { Footer } from "@/components/Footer";
 import { BulleDevis } from "@/components/BulleDevis";
@@ -58,6 +59,7 @@ function Index() {
       <AvantApres />
       <GalerieTeaser />
       <Abonnements />
+      <AvisGoogle />
       <Devis />
       <Footer />
       <BulleDevis />

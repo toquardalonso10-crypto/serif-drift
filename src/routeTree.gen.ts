@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as RealisationsRouteImport } from './routes/realisations'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiDevisRouteImport } from './routes/api/devis'
+import { Route as ApiGoogleReviewsRouteImport } from './routes/api/google-reviews'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +36,11 @@ const ApiDevisRoute = ApiDevisRouteImport.update({
   path: '/api/devis',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiGoogleReviewsRoute = ApiGoogleReviewsRouteImport.update({
+  id: '/api/google-reviews',
+  path: '/api/google-reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/services/$slug',
   path: '/services/$slug',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/realisations': typeof RealisationsRoute
   '/api/chat': typeof ApiChatRoute
   '/api/devis': typeof ApiDevisRoute
+  '/api/google-reviews': typeof ApiGoogleReviewsRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/realisations': typeof RealisationsRoute
   '/api/chat': typeof ApiChatRoute
   '/api/devis': typeof ApiDevisRoute
+  '/api/google-reviews': typeof ApiGoogleReviewsRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesById {
@@ -61,20 +69,33 @@ export interface FileRoutesById {
   '/realisations': typeof RealisationsRoute
   '/api/chat': typeof ApiChatRoute
   '/api/devis': typeof ApiDevisRoute
+  '/api/google-reviews': typeof ApiGoogleReviewsRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/realisations' | '/api/chat' | '/api/devis' | '/services/$slug'
+    | '/'
+    | '/realisations'
+    | '/api/chat'
+    | '/api/devis'
+    | '/api/google-reviews'
+    | '/services/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/realisations' | '/api/chat' | '/api/devis' | '/services/$slug'
+  to:
+    | '/'
+    | '/realisations'
+    | '/api/chat'
+    | '/api/devis'
+    | '/api/google-reviews'
+    | '/services/$slug'
   id:
     | '__root__'
     | '/'
     | '/realisations'
     | '/api/chat'
     | '/api/devis'
+    | '/api/google-reviews'
     | '/services/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -83,6 +104,7 @@ export interface RootRouteChildren {
   RealisationsRoute: typeof RealisationsRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiDevisRoute: typeof ApiDevisRoute
+  ApiGoogleReviewsRoute: typeof ApiGoogleReviewsRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
 }
 
@@ -116,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiDevisRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/google-reviews': {
+      id: '/api/google-reviews'
+      path: '/api/google-reviews'
+      fullPath: '/api/google-reviews'
+      preLoaderRoute: typeof ApiGoogleReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/$slug': {
       id: '/services/$slug'
       path: '/services/$slug'
@@ -131,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   RealisationsRoute: RealisationsRoute,
   ApiChatRoute: ApiChatRoute,
   ApiDevisRoute: ApiDevisRoute,
+  ApiGoogleReviewsRoute: ApiGoogleReviewsRoute,
   ServicesSlugRoute: ServicesSlugRoute,
 }
 export const routeTree = rootRouteImport
