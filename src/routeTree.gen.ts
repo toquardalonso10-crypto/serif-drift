@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as RealisationsRouteImport } from './routes/realisations'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ApiDevisRouteImport } from './routes/api/devis'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const ApiChatRoute = ApiChatRouteImport.update({
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiDevisRoute = ApiDevisRouteImport.update({
+  id: '/api/devis',
+  path: '/api/devis',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/services/$slug',
   path: '/services/$slug',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/realisations': typeof RealisationsRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/devis': typeof ApiDevisRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/realisations': typeof RealisationsRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/devis': typeof ApiDevisRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,29 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/realisations': typeof RealisationsRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/devis': typeof ApiDevisRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/realisations' | '/api/chat' | '/services/$slug'
+  fullPaths:
+    '/' | '/realisations' | '/api/chat' | '/api/devis' | '/services/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/realisations' | '/api/chat' | '/services/$slug'
-  id: '__root__' | '/' | '/realisations' | '/api/chat' | '/services/$slug'
+  to: '/' | '/realisations' | '/api/chat' | '/api/devis' | '/services/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/realisations'
+    | '/api/chat'
+    | '/api/devis'
+    | '/services/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   RealisationsRoute: typeof RealisationsRoute
   ApiChatRoute: typeof ApiChatRoute
+  ApiDevisRoute: typeof ApiDevisRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
 }
 
@@ -92,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/devis': {
+      id: '/api/devis'
+      path: '/api/devis'
+      fullPath: '/api/devis'
+      preLoaderRoute: typeof ApiDevisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/$slug': {
       id: '/services/$slug'
       path: '/services/$slug'
@@ -106,6 +130,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   RealisationsRoute: RealisationsRoute,
   ApiChatRoute: ApiChatRoute,
+  ApiDevisRoute: ApiDevisRoute,
   ServicesSlugRoute: ServicesSlugRoute,
 }
 export const routeTree = rootRouteImport

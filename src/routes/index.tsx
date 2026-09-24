@@ -3,13 +3,10 @@ import heroElagueur from "@/assets/hero-elagueur.jpg";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { Hero } from "@/components/Hero";
 import { Meteo } from "@/components/Meteo";
-import { Partenaires } from "@/components/Partenaires";
 import { Services } from "@/components/Services";
 import { AvantApres } from "@/components/AvantApres";
 import { GalerieTeaser } from "@/components/GalerieTeaser";
 import { Abonnements } from "@/components/Abonnements";
-import { Avis } from "@/components/Avis";
-
 import { Devis } from "@/components/Devis";
 import { Footer } from "@/components/Footer";
 import { BulleDevis } from "@/components/BulleDevis";
@@ -55,13 +52,10 @@ function Index() {
     <main id="top">
       <Hero />
       <Meteo />
-      <Partenaires />
       <Services />
       <AvantApres />
       <GalerieTeaser />
       <Abonnements />
-      <Avis />
-
       <Devis />
       <Footer />
       <BulleDevis />

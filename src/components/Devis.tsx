@@ -1,17 +1,34 @@
-import { type FormEvent } from "react";
+import { type FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { toast } from "sonner";
 import { SerifGlow } from "./SerifGlow";
 
 export function Devis() {
-  const envoyer = (e: FormEvent<HTMLFormElement>) => {
+  const [envoi, setEnvoi] = useState(false);
+
+  const envoyer = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    toast.success(
-      `Merci ${data.get("prenom")} ! Votre demande est partie, on vous rappelle sous 24 h.`,
-    );
-    e.currentTarget.reset();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const prenom = String(data.get("prenom") ?? "");
+    setEnvoi(true);
+    try {
+      const res = await fetch("/api/devis", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(data.entries())),
+      });
+      if (!res.ok) throw new Error("Échec de l'envoi");
+      toast.success(`Merci ${prenom} ! Votre demande est partie, on vous rappelle sous 24 h.`);
+      form.reset();
+    } catch {
+      toast.error(
+        "Impossible d'envoyer votre demande — appelez-nous directement au 07 78 26 00 88.",
+      );
+    } finally {
+      setEnvoi(false);
+    }
   };
 
   const champ =
@@ -180,9 +197,10 @@ export function Devis() {
 
           <button
             type="submit"
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-sunset px-6 py-3.5 text-sm font-bold text-bark shadow-rustic transition-transform hover:-translate-y-0.5"
+            disabled={envoi}
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-sunset px-6 py-3.5 text-sm font-bold text-bark shadow-rustic transition-transform hover:-translate-y-0.5 disabled:opacity-60"
           >
-            <Send className="h-4 w-4" /> Envoyer ma demande
+            <Send className="h-4 w-4" /> {envoi ? "Envoi en cours…" : "Envoyer ma demande"}
           </button>
         </motion.form>
       </div>
