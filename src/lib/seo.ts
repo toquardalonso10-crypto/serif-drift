@@ -1,6 +1,10 @@
 export const SITE_URL = "https://etstoquardetfils.com";
 export const SITE_NAME = "Ets Toquard & Fils";
 
+// Identifiant de la balise Google Ads (compte), pour le suivi des
+// conversions de la campagne "Élagage Charente-Maritime".
+export const GOOGLE_ADS_ID = "AW-18450769765";
+
 /**
  * Construit une URL absolue à partir d'un chemin relatif au site (ex: une
  * URL d'asset émise par Vite comme "/assets/hero-abc123.jpg") ou d'une route.
