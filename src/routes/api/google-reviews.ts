@@ -25,8 +25,17 @@ export const Route = createFileRoute("/api/google-reviews")({
         const key = process.env.GOOGLE_PLACES_API_KEY;
         const writeReviewUri = `https://search.google.com/local/writereview?placeid=${GOOGLE_PLACE_ID}`;
 
+        const fallback: ReviewsPayload = {
+          rating: null,
+          userRatingCount: 0,
+          reviews: [],
+          googleMapsUri: `https://www.google.com/maps/place/?q=place_id:${GOOGLE_PLACE_ID}`,
+          writeReviewUri,
+        };
+
         if (!key) {
-          return Response.json({ error: "Missing GOOGLE_PLACES_API_KEY" }, { status: 500 });
+          console.warn("google-reviews: GOOGLE_PLACES_API_KEY manquante");
+          return Response.json(fallback);
         }
 
         try {
@@ -39,8 +48,8 @@ export const Route = createFileRoute("/api/google-reviews")({
           });
 
           if (!res.ok) {
-            const text = await res.text();
-            return Response.json({ error: text }, { status: res.status });
+            console.warn("google-reviews:", res.status, await res.text());
+            return Response.json(fallback);
           }
 
           const data = (await res.json()) as {
@@ -70,8 +79,8 @@ export const Route = createFileRoute("/api/google-reviews")({
 
           return Response.json(payload);
         } catch (error) {
-          const message = error instanceof Error ? error.message : "Erreur";
-          return Response.json({ error: message }, { status: 500 });
+          console.warn("google-reviews:", error instanceof Error ? error.message : error);
+          return Response.json(fallback);
         }
       },
     },
