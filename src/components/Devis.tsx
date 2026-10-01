@@ -4,6 +4,14 @@ import { Send } from "lucide-react";
 import { toast } from "sonner";
 import { SerifGlow } from "./SerifGlow";
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
+const CONVERSION_CONTACT = "AW-18450769765/SZwJCNbjh40dEOXOgd5E";
+
 export function Devis() {
   const [envoi, setEnvoi] = useState(false);
 
@@ -20,6 +28,7 @@ export function Devis() {
         body: JSON.stringify(Object.fromEntries(data.entries())),
       });
       if (!res.ok) throw new Error("Échec de l'envoi");
+      window.gtag?.("event", "conversion", { send_to: CONVERSION_CONTACT });
       toast.success(`Merci ${prenom} ! Votre demande est partie, on vous rappelle sous 24 h.`);
       form.reset();
     } catch {
