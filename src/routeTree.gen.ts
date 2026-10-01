@@ -9,31 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as RealisationsRouteImport } from './routes/realisations'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
-import { Route as ApiGoogleReviewsRouteImport } from './routes/api/google-reviews'
-import { Route as ApiDevisRouteImport } from './routes/api/devis'
+import { Route as RealisationsRouteImport } from './routes/realisations'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ApiDevisRouteImport } from './routes/api/devis'
+import { Route as ApiGoogleReviewsRouteImport } from './routes/api/google-reviews'
+import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
-const RealisationsRoute = RealisationsRouteImport.update({
-  id: '/realisations',
-  path: '/realisations',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesSlugRoute = ServicesSlugRouteImport.update({
-  id: '/services/$slug',
-  path: '/services/$slug',
+const RealisationsRoute = RealisationsRouteImport.update({
+  id: '/realisations',
+  path: '/realisations',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiGoogleReviewsRoute = ApiGoogleReviewsRouteImport.update({
-  id: '/api/google-reviews',
-  path: '/api/google-reviews',
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiDevisRoute = ApiDevisRouteImport.update({
@@ -41,9 +36,14 @@ const ApiDevisRoute = ApiDevisRouteImport.update({
   path: '/api/devis',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiChatRoute = ApiChatRouteImport.update({
-  id: '/api/chat',
-  path: '/api/chat',
+const ApiGoogleReviewsRoute = ApiGoogleReviewsRouteImport.update({
+  id: '/api/google-reviews',
+  path: '/api/google-reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/services/$slug',
+  path: '/services/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -110,13 +110,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/realisations': {
-      id: '/realisations'
-      path: '/realisations'
-      fullPath: '/realisations'
-      preLoaderRoute: typeof RealisationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -124,18 +117,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/$slug': {
-      id: '/services/$slug'
-      path: '/services/$slug'
-      fullPath: '/services/$slug'
-      preLoaderRoute: typeof ServicesSlugRouteImport
+    '/realisations': {
+      id: '/realisations'
+      path: '/realisations'
+      fullPath: '/realisations'
+      preLoaderRoute: typeof RealisationsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/google-reviews': {
-      id: '/api/google-reviews'
-      path: '/api/google-reviews'
-      fullPath: '/api/google-reviews'
-      preLoaderRoute: typeof ApiGoogleReviewsRouteImport
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/devis': {
@@ -145,11 +138,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiDevisRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/chat': {
-      id: '/api/chat'
-      path: '/api/chat'
-      fullPath: '/api/chat'
-      preLoaderRoute: typeof ApiChatRouteImport
+    '/api/google-reviews': {
+      id: '/api/google-reviews'
+      path: '/api/google-reviews'
+      fullPath: '/api/google-reviews'
+      preLoaderRoute: typeof ApiGoogleReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/services/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
